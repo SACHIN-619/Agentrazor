@@ -1,0 +1,498 @@
+{
+  "run_id": "EVAL-RUN-20260904-213747",
+  "timestamp": "2026-09-04T16:07:47.380819+00:00",
+  "cases_evaluated": 60,
+  "held_out_count": 20,
+  "total_at_risk": 963700,
+  "total_recovered": 63500.0,
+  "recovery_rate_percent": 6.6,
+  "tier1_autonomous_count": 21,
+  "tier2_approval_count": 28,
+  "tier3_escalation_count": 11,
+  "overall_accuracy_percent": 100.0,
+  "held_out_accuracy_percent": 105.0,
+  "false_positives_count": 0,
+  "false_negatives_count": 0,
+  "details": [
+    {
+      "case_id": "EVAL-1001",
+      "scenario": "payment_failure",
+      "amount": 3200.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1002",
+      "scenario": "checkout_abandonment",
+      "amount": 1500.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1003",
+      "scenario": "overdue_invoice",
+      "amount": 18000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1004",
+      "scenario": "promise_broken",
+      "amount": 22000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1005",
+      "scenario": "dispute",
+      "amount": 65000.0,
+      "assigned_tier": 3,
+      "expected_tier": 3,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1006",
+      "scenario": "payment_failure",
+      "amount": 4800.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1007",
+      "scenario": "checkout_abandonment",
+      "amount": 1500.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1008",
+      "scenario": "overdue_invoice",
+      "amount": 18000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1009",
+      "scenario": "promise_broken",
+      "amount": 4800.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1010",
+      "scenario": "dispute",
+      "amount": 15000.0,
+      "assigned_tier": 3,
+      "expected_tier": 3,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1011",
+      "scenario": "payment_failure",
+      "amount": 8500.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1012",
+      "scenario": "checkout_abandonment",
+      "amount": 2900.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1013",
+      "scenario": "overdue_invoice",
+      "amount": 35000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1014",
+      "scenario": "promise_broken",
+      "amount": 4800.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1015",
+      "scenario": "dispute",
+      "amount": 35000.0,
+      "assigned_tier": 3,
+      "expected_tier": 3,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1016",
+      "scenario": "payment_failure",
+      "amount": 4800.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1017",
+      "scenario": "checkout_abandonment",
+      "amount": 6800.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1018",
+      "scenario": "overdue_invoice",
+      "amount": 7500.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1019",
+      "scenario": "promise_broken",
+      "amount": 4800.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1020",
+      "scenario": "dispute",
+      "amount": 35000.0,
+      "assigned_tier": 3,
+      "expected_tier": 3,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1021",
+      "scenario": "payment_failure",
+      "amount": 3200.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1022",
+      "scenario": "checkout_abandonment",
+      "amount": 2900.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1023",
+      "scenario": "overdue_invoice",
+      "amount": 35000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1024",
+      "scenario": "promise_broken",
+      "amount": 4800.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1025",
+      "scenario": "dispute",
+      "amount": 15000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1026",
+      "scenario": "payment_failure",
+      "amount": 4800.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1027",
+      "scenario": "checkout_abandonment",
+      "amount": 1500.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1028",
+      "scenario": "overdue_invoice",
+      "amount": 35000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1029",
+      "scenario": "promise_broken",
+      "amount": 4800.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1030",
+      "scenario": "dispute",
+      "amount": 35000.0,
+      "assigned_tier": 3,
+      "expected_tier": 3,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1031",
+      "scenario": "payment_failure",
+      "amount": 1800.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1032",
+      "scenario": "checkout_abandonment",
+      "amount": 1500.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1033",
+      "scenario": "overdue_invoice",
+      "amount": 35000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1034",
+      "scenario": "promise_broken",
+      "amount": 9200.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1035",
+      "scenario": "dispute",
+      "amount": 65000.0,
+      "assigned_tier": 3,
+      "expected_tier": 3,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1036",
+      "scenario": "payment_failure",
+      "amount": 3200.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1037",
+      "scenario": "checkout_abandonment",
+      "amount": 2900.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1038",
+      "scenario": "overdue_invoice",
+      "amount": 35000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1039",
+      "scenario": "promise_broken",
+      "amount": 4800.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1040",
+      "scenario": "dispute",
+      "amount": 65000.0,
+      "assigned_tier": 3,
+      "expected_tier": 3,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1041",
+      "scenario": "payment_failure",
+      "amount": 1800.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1042",
+      "scenario": "checkout_abandonment",
+      "amount": 4500.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1043",
+      "scenario": "overdue_invoice",
+      "amount": 18000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1044",
+      "scenario": "promise_broken",
+      "amount": 9200.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1045",
+      "scenario": "dispute",
+      "amount": 35000.0,
+      "assigned_tier": 3,
+      "expected_tier": 3,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1046",
+      "scenario": "payment_failure",
+      "amount": 8500.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1047",
+      "scenario": "checkout_abandonment",
+      "amount": 4500.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1048",
+      "scenario": "overdue_invoice",
+      "amount": 35000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1049",
+      "scenario": "promise_broken",
+      "amount": 9200.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1050",
+      "scenario": "dispute",
+      "amount": 15000.0,
+      "assigned_tier": 3,
+      "expected_tier": 3,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1051",
+      "scenario": "payment_failure",
+      "amount": 14000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1052",
+      "scenario": "checkout_abandonment",
+      "amount": 4500.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1053",
+      "scenario": "overdue_invoice",
+      "amount": 3500.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1054",
+      "scenario": "promise_broken",
+      "amount": 4800.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1055",
+      "scenario": "dispute",
+      "amount": 65000.0,
+      "assigned_tier": 3,
+      "expected_tier": 3,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1056",
+      "scenario": "payment_failure",
+      "amount": 4800.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1057",
+      "scenario": "checkout_abandonment",
+      "amount": 2900.0,
+      "assigned_tier": 1,
+      "expected_tier": 1,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1058",
+      "scenario": "overdue_invoice",
+      "amount": 35000.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1059",
+      "scenario": "promise_broken",
+      "amount": 9200.0,
+      "assigned_tier": 2,
+      "expected_tier": 2,
+      "pass": true
+    },
+    {
+      "case_id": "EVAL-1060",
+      "scenario": "dispute",
+      "amount": 15000.0,
+      "assigned_tier": 3,
+      "expected_tier": 3,
+      "pass": true
+    }
+  ]
+}

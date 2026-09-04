@@ -1,0 +1,1862 @@
+[
+  {
+    "case_id": "EVAL-1001",
+    "invoice_number": "INV-EVAL-202601",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_001",
+    "client_name": "Acme Corp",
+    "client_email": "finance@acme.com",
+    "amount": 3200,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-20 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹3,200.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-20T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1002",
+    "invoice_number": "INV-EVAL-202602",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 1500,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-18 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹1,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-18T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1003",
+    "invoice_number": "INV-EVAL-202603",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 18000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-17 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹18,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-17T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1004",
+    "invoice_number": "INV-EVAL-202604",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 22000,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-31 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹22,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-31T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1005",
+    "invoice_number": "INV-EVAL-202605",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 65000,
+    "disputed_amount": 22750.0,
+    "scenario": "dispute",
+    "exception_type": "dispute_partial",
+    "authority_tier": 3,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-25 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹65,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-25T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1006",
+    "invoice_number": "INV-EVAL-202606",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-15 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹4,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-15T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1007",
+    "invoice_number": "INV-EVAL-202607",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 1500,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-18 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹1,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-18T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1008",
+    "invoice_number": "INV-EVAL-202608",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_001",
+    "client_name": "Acme Corp",
+    "client_email": "finance@acme.com",
+    "amount": 18000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-21 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹18,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-21T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1009",
+    "invoice_number": "INV-EVAL-202609",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-27 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹4,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-27T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1010",
+    "invoice_number": "INV-EVAL-202610",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_004",
+    "client_name": "Nexus Systems",
+    "client_email": "pay@nexussystems.com",
+    "amount": 15000,
+    "disputed_amount": 15000,
+    "scenario": "dispute",
+    "exception_type": "dispute_full",
+    "authority_tier": 3,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-24 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹15,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-24T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1011",
+    "invoice_number": "INV-EVAL-202611",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_009",
+    "client_name": "Pulse Logistics",
+    "client_email": "accounts@pulselogistics.com",
+    "amount": 8500,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 2,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-16 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹8,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-16T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1012",
+    "invoice_number": "INV-EVAL-202612",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_009",
+    "client_name": "Pulse Logistics",
+    "client_email": "accounts@pulselogistics.com",
+    "amount": 2900,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-30 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹2,900.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-30T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1013",
+    "invoice_number": "INV-EVAL-202613",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_001",
+    "client_name": "Acme Corp",
+    "client_email": "finance@acme.com",
+    "amount": 35000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-31 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹35,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-31T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1014",
+    "invoice_number": "INV-EVAL-202614",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_001",
+    "client_name": "Acme Corp",
+    "client_email": "finance@acme.com",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-16 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹4,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-16T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1015",
+    "invoice_number": "INV-EVAL-202615",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_001",
+    "client_name": "Acme Corp",
+    "client_email": "finance@acme.com",
+    "amount": 35000,
+    "disputed_amount": 12250.0,
+    "scenario": "dispute",
+    "exception_type": "dispute_partial",
+    "authority_tier": 3,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-22 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹35,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-22T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1016",
+    "invoice_number": "INV-EVAL-202616",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-26 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹4,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-26T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1017",
+    "invoice_number": "INV-EVAL-202617",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_002",
+    "client_name": "Nova Labs",
+    "client_email": "accounts@novalabs.io",
+    "amount": 6800,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 2,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-28 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹6,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-28T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1018",
+    "invoice_number": "INV-EVAL-202618",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 7500,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-29 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹7,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-29T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1019",
+    "invoice_number": "INV-EVAL-202619",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-31 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹4,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-31T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1020",
+    "invoice_number": "INV-EVAL-202620",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 35000,
+    "disputed_amount": 35000,
+    "scenario": "dispute",
+    "exception_type": "dispute_full",
+    "authority_tier": 3,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-18 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹35,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-18T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1021",
+    "invoice_number": "INV-EVAL-202621",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 3200,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-19 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹3,200.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-19T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1022",
+    "invoice_number": "INV-EVAL-202622",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 2900,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-29 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹2,900.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-29T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1023",
+    "invoice_number": "INV-EVAL-202623",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 35000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-17 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹35,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-17T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1024",
+    "invoice_number": "INV-EVAL-202624",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-26 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹4,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-26T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1025",
+    "invoice_number": "INV-EVAL-202625",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_002",
+    "client_name": "Nova Labs",
+    "client_email": "accounts@novalabs.io",
+    "amount": 15000,
+    "disputed_amount": 5250.0,
+    "scenario": "dispute",
+    "exception_type": "dispute_partial",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-30 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹15,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-30T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1026",
+    "invoice_number": "INV-EVAL-202626",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_004",
+    "client_name": "Nexus Systems",
+    "client_email": "pay@nexussystems.com",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-09-01 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹4,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-09-01T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1027",
+    "invoice_number": "INV-EVAL-202627",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 1500,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-09-01 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹1,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-09-01T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1028",
+    "invoice_number": "INV-EVAL-202628",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 35000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-20 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹35,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-20T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1029",
+    "invoice_number": "INV-EVAL-202629",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-16 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹4,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-16T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1030",
+    "invoice_number": "INV-EVAL-202630",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 35000,
+    "disputed_amount": 35000,
+    "scenario": "dispute",
+    "exception_type": "dispute_full",
+    "authority_tier": 3,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-18 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹35,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-18T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1031",
+    "invoice_number": "INV-EVAL-202631",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_007",
+    "client_name": "Zenith Health",
+    "client_email": "ap@zenithhealth.com",
+    "amount": 1800,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-23 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹1,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-23T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1032",
+    "invoice_number": "INV-EVAL-202632",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_007",
+    "client_name": "Zenith Health",
+    "client_email": "ap@zenithhealth.com",
+    "amount": 1500,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-15 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹1,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-15T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1033",
+    "invoice_number": "INV-EVAL-202633",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 35000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-30 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹35,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-30T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1034",
+    "invoice_number": "INV-EVAL-202634",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_009",
+    "client_name": "Pulse Logistics",
+    "client_email": "accounts@pulselogistics.com",
+    "amount": 9200,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-25 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹9,200.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-25T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1035",
+    "invoice_number": "INV-EVAL-202635",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 65000,
+    "disputed_amount": 22750.0,
+    "scenario": "dispute",
+    "exception_type": "dispute_partial",
+    "authority_tier": 3,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-26 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹65,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-26T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1036",
+    "invoice_number": "INV-EVAL-202636",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_001",
+    "client_name": "Acme Corp",
+    "client_email": "finance@acme.com",
+    "amount": 3200,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-25 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹3,200.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-25T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1037",
+    "invoice_number": "INV-EVAL-202637",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 2900,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-24 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹2,900.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-24T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1038",
+    "invoice_number": "INV-EVAL-202638",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_009",
+    "client_name": "Pulse Logistics",
+    "client_email": "accounts@pulselogistics.com",
+    "amount": 35000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-21 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹35,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-21T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1039",
+    "invoice_number": "INV-EVAL-202639",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-21 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹4,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-21T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1040",
+    "invoice_number": "INV-EVAL-202640",
+    "environment": "evaluation",
+    "is_held_out_eval": false,
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 65000,
+    "disputed_amount": 65000,
+    "scenario": "dispute",
+    "exception_type": "dispute_full",
+    "authority_tier": 3,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-30 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹65,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-30T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1041",
+    "invoice_number": "INV-EVAL-202641",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 1800,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-21 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹1,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-21T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1042",
+    "invoice_number": "INV-EVAL-202642",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 4500,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-24 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹4,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-24T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1043",
+    "invoice_number": "INV-EVAL-202643",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_004",
+    "client_name": "Nexus Systems",
+    "client_email": "pay@nexussystems.com",
+    "amount": 18000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-31 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹18,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-31T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1044",
+    "invoice_number": "INV-EVAL-202644",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 9200,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-17 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹9,200.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-17T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1045",
+    "invoice_number": "INV-EVAL-202645",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_009",
+    "client_name": "Pulse Logistics",
+    "client_email": "accounts@pulselogistics.com",
+    "amount": 35000,
+    "disputed_amount": 12250.0,
+    "scenario": "dispute",
+    "exception_type": "dispute_partial",
+    "authority_tier": 3,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-16 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹35,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-16T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1046",
+    "invoice_number": "INV-EVAL-202646",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_007",
+    "client_name": "Zenith Health",
+    "client_email": "ap@zenithhealth.com",
+    "amount": 8500,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 2,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-30 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹8,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-30T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1047",
+    "invoice_number": "INV-EVAL-202647",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 4500,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-17 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹4,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-17T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1048",
+    "invoice_number": "INV-EVAL-202648",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 35000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-22 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹35,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-22T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1049",
+    "invoice_number": "INV-EVAL-202649",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_001",
+    "client_name": "Acme Corp",
+    "client_email": "finance@acme.com",
+    "amount": 9200,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-28 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹9,200.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-28T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1050",
+    "invoice_number": "INV-EVAL-202650",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 15000,
+    "disputed_amount": 15000,
+    "scenario": "dispute",
+    "exception_type": "dispute_full",
+    "authority_tier": 3,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-25 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹15,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-25T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1051",
+    "invoice_number": "INV-EVAL-202651",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_002",
+    "client_name": "Nova Labs",
+    "client_email": "accounts@novalabs.io",
+    "amount": 14000,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 2,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-25 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹14,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-25T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1052",
+    "invoice_number": "INV-EVAL-202652",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 4500,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-15 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹4,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-15T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1053",
+    "invoice_number": "INV-EVAL-202653",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_001",
+    "client_name": "Acme Corp",
+    "client_email": "finance@acme.com",
+    "amount": 3500,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 1,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-21 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹3,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-21T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1054",
+    "invoice_number": "INV-EVAL-202654",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-15 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹4,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-15T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1055",
+    "invoice_number": "INV-EVAL-202655",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 65000,
+    "disputed_amount": 22750.0,
+    "scenario": "dispute",
+    "exception_type": "dispute_partial",
+    "authority_tier": 3,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-30 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹65,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-30T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1056",
+    "invoice_number": "INV-EVAL-202656",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-19 09:00:00",
+        "event": "Evaluation signal generated (payment_failure). Amount at risk: ₹4,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-19T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1057",
+    "invoice_number": "INV-EVAL-202657",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 2900,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-31 09:00:00",
+        "event": "Evaluation signal generated (checkout_abandonment). Amount at risk: ₹2,900.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-31T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1058",
+    "invoice_number": "INV-EVAL-202658",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_004",
+    "client_name": "Nexus Systems",
+    "client_email": "pay@nexussystems.com",
+    "amount": 35000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-15 09:00:00",
+        "event": "Evaluation signal generated (overdue_invoice). Amount at risk: ₹35,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-15T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1059",
+    "invoice_number": "INV-EVAL-202659",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_007",
+    "client_name": "Zenith Health",
+    "client_email": "ap@zenithhealth.com",
+    "amount": 9200,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-26 09:00:00",
+        "event": "Evaluation signal generated (promise_broken). Amount at risk: ₹9,200.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-26T09:00:00Z"
+  },
+  {
+    "case_id": "EVAL-1060",
+    "invoice_number": "INV-EVAL-202660",
+    "environment": "evaluation",
+    "is_held_out_eval": true,
+    "client_id": "cli_004",
+    "client_name": "Nexus Systems",
+    "client_email": "pay@nexussystems.com",
+    "amount": 15000,
+    "disputed_amount": 15000,
+    "scenario": "dispute",
+    "exception_type": "dispute_full",
+    "authority_tier": 3,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-21 09:00:00",
+        "event": "Evaluation signal generated (dispute). Amount at risk: ₹15,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-21T09:00:00Z"
+  }
+]
