@@ -24,6 +24,9 @@ Event_Loop/
 PII/
 *.sqlite
 *.db
+*.csv
+*_api_keys*
+*_keys*.csv
 
 # IDE & System files
 .vscode/

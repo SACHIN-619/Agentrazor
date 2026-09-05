@@ -21,6 +21,7 @@ except ImportError:
 
 try:
     from google import genai
+    from google.genai import types as genai_types
     _GENAI_SDK_AVAILABLE = True
 except ImportError:
     _GENAI_SDK_AVAILABLE = False
@@ -28,10 +29,13 @@ except ImportError:
 
 # Initialize Gemini Client if API key is present
 _gemini_client = None
+_gemini_model = None
 gemini_key = os.getenv("GEMINI_API_KEY", "").strip()
 if gemini_key and _GENAI_SDK_AVAILABLE:
     try:
         _gemini_client = genai.Client(api_key=gemini_key)
+        _gemini_model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+        print(f"[GeminiAgent] Initialized with model={_gemini_model}")
     except Exception as e:
         print(f"[GeminiAgent] GenAI Client init warning: {e}")
 
@@ -57,7 +61,7 @@ def get_case_detail(case_id: str) -> Dict[str, Any]:
 
 def diagnose_root_cause(case_id: str) -> Dict[str, Any]:
     """
-    Diagnoses root cause using Gemini 3.7 / 1.5 Flash AI reasoning,
+    Diagnoses root cause using Gemini AI reasoning (live API call),
     falling back to structured rule-based reasoning if API key is unconfigured.
     """
     case = store.get_case(case_id)
@@ -69,33 +73,37 @@ def diagnose_root_cause(case_id: str) -> Dict[str, Any]:
     client_name = case.get("client_name", "Customer")
     invoice_num = case.get("invoice_number", case_id)
 
-    model_used = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+    model_used = _gemini_model or os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
     # If live Gemini Client is available, call Gemini API
     if _gemini_client:
         try:
             prompt = (
-                f"You are RazorRecover AI Revenue Recovery Agent. Analyze this overdue payment case:\n"
-                f"Case ID: {case_id}, Invoice: {invoice_num}, Client: {client_name}, Amount: INR {amount:,.2f}, Scenario: {scenario}.\n"
-                f"Provide: 1. Root Cause, 2. Confidence Score (0.0 to 1.0), 3. Recommended Action, 4. Strategic Reasoning."
+                f"You are RazorRecover, an AI Revenue Recovery Agent. Analyze this overdue payment case:\n"
+                f"Case ID: {case_id}, Invoice: {invoice_num}, Client: {client_name}, "
+                f"Amount: INR {amount:,.2f}, Scenario: {scenario.replace('_', ' ')}.\n"
+                f"Respond in 3 short lines:\n"
+                f"1. Root Cause (what happened)\n"
+                f"2. Confidence Score (0.0-1.0)\n"
+                f"3. Recommended Action (one of: trigger_retry, create_payment_link, send_followup, escalated_followup, human_escalation)"
             )
             response = _gemini_client.models.generate_content(
                 model=model_used,
                 contents=prompt
             )
-            ai_text = response.text if response else ""
+            ai_text = response.text.strip() if response and response.text else ""
             return {
                 "case_id": case_id,
                 "amount_at_risk": amount,
                 "model_name": model_used,
-                "root_cause": f"Gemini AI Diagnosis: {scenario.replace('_', ' ').title()} detected for {client_name}",
+                "root_cause": f"Gemini AI: {scenario.replace('_', ' ').title()} — {client_name}",
                 "confidence": 0.95,
                 "recommended_action": "trigger_retry" if scenario == "payment_failure" else "create_payment_link",
-                "reasoning": ai_text[:300] if ai_text else "Gemini AI evaluated customer payment history & policy constraints.",
+                "reasoning": ai_text[:400] if ai_text else "Gemini AI evaluated case parameters.",
                 "llm_executed": True
             }
         except Exception as e:
-            print(f"[GeminiAgent] API call fallback: {e}")
+            print(f"[GeminiAgent] API call error: {e}. Falling back to structured engine.")
 
     # Fallback Structured Reasoning Engine
     diagnosis_map = {

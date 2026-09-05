@@ -4,89 +4,89 @@
     "client_name": "Acme Corp",
     "client_email": "finance@acme.com",
     "relationship_tier": "Tier A Enterprise",
-    "avg_days_to_pay": 35,
-    "total_invoices_paid": 23,
-    "promises_kept_ratio": 0.95
+    "avg_days_to_pay": 18,
+    "total_invoices_paid": 15,
+    "promises_kept_ratio": 0.76
   },
   {
     "client_id": "cli_002",
     "client_name": "Nova Labs",
     "client_email": "accounts@novalabs.io",
     "relationship_tier": "Tier B Growth",
-    "avg_days_to_pay": 44,
-    "total_invoices_paid": 30,
-    "promises_kept_ratio": 0.98
+    "avg_days_to_pay": 16,
+    "total_invoices_paid": 15,
+    "promises_kept_ratio": 0.95
   },
   {
     "client_id": "cli_003",
     "client_name": "Orbit Tech",
     "client_email": "billing@orbittech.com",
     "relationship_tier": "Tier A Enterprise",
-    "avg_days_to_pay": 45,
-    "total_invoices_paid": 25,
-    "promises_kept_ratio": 0.93
+    "avg_days_to_pay": 38,
+    "total_invoices_paid": 14,
+    "promises_kept_ratio": 0.78
   },
   {
     "client_id": "cli_004",
     "client_name": "Nexus Systems",
     "client_email": "pay@nexussystems.com",
     "relationship_tier": "Tier C Standard",
-    "avg_days_to_pay": 41,
-    "total_invoices_paid": 14,
-    "promises_kept_ratio": 0.83
+    "avg_days_to_pay": 27,
+    "total_invoices_paid": 16,
+    "promises_kept_ratio": 0.88
   },
   {
     "client_id": "cli_005",
     "client_name": "Apex Dynamics",
     "client_email": "invoice@apexdynamics.org",
     "relationship_tier": "Tier B Growth",
-    "avg_days_to_pay": 18,
-    "total_invoices_paid": 6,
-    "promises_kept_ratio": 0.75
+    "avg_days_to_pay": 13,
+    "total_invoices_paid": 20,
+    "promises_kept_ratio": 0.91
   },
   {
     "client_id": "cli_006",
     "client_name": "Starlight Retail",
     "client_email": "vendor@starlight.in",
     "relationship_tier": "Tier C Standard",
-    "avg_days_to_pay": 39,
-    "total_invoices_paid": 26,
-    "promises_kept_ratio": 0.97
+    "avg_days_to_pay": 20,
+    "total_invoices_paid": 27,
+    "promises_kept_ratio": 0.96
   },
   {
     "client_id": "cli_007",
     "client_name": "Zenith Health",
     "client_email": "ap@zenithhealth.com",
     "relationship_tier": "Tier A Enterprise",
-    "avg_days_to_pay": 25,
-    "total_invoices_paid": 23,
-    "promises_kept_ratio": 0.83
+    "avg_days_to_pay": 24,
+    "total_invoices_paid": 27,
+    "promises_kept_ratio": 0.86
   },
   {
     "client_id": "cli_008",
     "client_name": "Vortex Media",
     "client_email": "finance@vortexmedia.in",
     "relationship_tier": "Tier B Growth",
-    "avg_days_to_pay": 29,
-    "total_invoices_paid": 22,
-    "promises_kept_ratio": 0.78
+    "avg_days_to_pay": 39,
+    "total_invoices_paid": 11,
+    "promises_kept_ratio": 0.95
   },
   {
     "client_id": "cli_009",
     "client_name": "Pulse Logistics",
     "client_email": "accounts@pulselogistics.com",
     "relationship_tier": "Tier C Standard",
-    "avg_days_to_pay": 23,
-    "total_invoices_paid": 5,
-    "promises_kept_ratio": 0.74
+    "avg_days_to_pay": 27,
+    "total_invoices_paid": 23,
+    "promises_kept_ratio": 0.94
   },
   {
     "client_id": "cli_010",
     "client_name": "Hyperion AI",
     "client_email": "billing@hyperionai.com",
     "relationship_tier": "Tier A Enterprise",
-    "avg_days_to_pay": 23,
-    "total_invoices_paid": 17,
-    "promises_kept_ratio": 0.78
+    "avg_days_to_pay": 20,
+    "total_invoices_paid": 9,
+    "promises_kept_ratio": 0.86
   }
 ]

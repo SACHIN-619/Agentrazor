@@ -7,6 +7,7 @@ case investigation, analytics, and live activity timeline.
 
 import os
 import sys
+from datetime import datetime, timezone
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
@@ -57,23 +58,23 @@ def razorpay_status():
 
 @app.route("/api/razorpay/ping", methods=["POST"])
 def razorpay_ping():
-    mode = razorpay_adapter.get_mode_info()
-    return jsonify({
-        "success": True,
-        "mode": mode.get("mode"),
-        "latency_ms": 18,
-        "message": f"Connection verified to {mode.get('mode')} API gateway"
-    })
+    result = razorpay_adapter.ping()
+    return jsonify(result)
 
 
 @app.route("/api/invoices/sync", methods=["GET", "POST"])
 @require_role(["Merchant Admin", "Finance Operator"])
 def sync_invoices():
+    """Sync invoices from Razorpay Test API (or local store in Offline Mode)."""
+    razorpay_info = razorpay_adapter.get_mode_info()
+    synced_invoices = razorpay_adapter.fetch_invoices()
     cases = store.list_cases(include_closed=True)
     return jsonify({
         "success": True,
         "synced_count": len(cases),
-        "source": "Razorpay Invoices API & Merchant Database",
+        "razorpay_invoices_fetched": len(synced_invoices),
+        "mode": razorpay_info.get("mode"),
+        "source": "Razorpay Test API" if razorpay_info.get("is_live_sdk") else "Offline Simulation",
         "timestamp": datetime.now(timezone.utc).isoformat()
     })
 

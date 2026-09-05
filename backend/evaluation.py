@@ -221,8 +221,12 @@ def run_batch_evaluation() -> Dict[str, Any]:
     recovery_rate = (total_recovered / total_at_risk * 100.0) if total_at_risk > 0 else 0.0
     overall_accuracy = (correct_decisions / total_eval * 100.0) if total_eval > 0 else 100.0
 
-    held_out_matches = sum(1 for d in evaluated_details if d["case_id"].startswith("EVAL-104") or d["case_id"].startswith("EVAL-105") or d["case_id"].startswith("EVAL-106"))
-    held_out_accuracy = (held_out_matches / held_out_count * 100.0) if held_out_count > 0 else 100.0
+    # Correctly compute held-out accuracy from actual held-out evaluated cases
+    held_out_details = [d for d in evaluated_details if d["case_id"].startswith("EVAL-") and
+                        any(c.get("case_id") == d["case_id"] and c.get("is_held_out_eval") for c in eval_cases)]
+    held_out_correct = sum(1 for d in held_out_details if d.get("pass"))
+    held_out_count_actual = len(held_out_details) if held_out_details else held_out_count
+    held_out_accuracy = (held_out_correct / held_out_count_actual * 100.0) if held_out_count_actual > 0 else 100.0
 
     results = {
         "run_id": run_id,

@@ -8,6 +8,13 @@ import os
 import time
 import uuid
 
+# Load .env before reading env vars (critical when module imported before app.py)
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 try:
     import razorpay
     _RAZORPAY_SDK_AVAILABLE = True
@@ -34,8 +41,60 @@ class RazorpayClientAdapter:
         return {
             "mode": "Razorpay Test Mode" if self.is_live_test_mode else "Offline Simulation Mode",
             "is_live_sdk": self.is_live_test_mode,
-            "key_id_configured": bool(self.key_id)
+            "key_id_configured": bool(self.key_id),
+            "key_id_prefix": self.key_id[:12] + "..." if len(self.key_id) > 12 else self.key_id
         }
+
+    def ping(self) -> dict:
+        """Tests live connectivity to Razorpay Test API."""
+        import time
+        start = time.time()
+        if self.is_live_test_mode:
+            try:
+                # Fetch 1 payment to verify API credentials work
+                res = self.client.payment.all({"count": 1})
+                latency_ms = int((time.time() - start) * 1000)
+                return {
+                    "success": True,
+                    "mode": "Razorpay Test Mode",
+                    "latency_ms": latency_ms,
+                    "message": "Live Razorpay Test API credentials verified successfully",
+                    "api_response": "OK"
+                }
+            except Exception as e:
+                return {
+                    "success": False,
+                    "mode": "Razorpay Test Mode",
+                    "error": str(e),
+                    "message": "Razorpay API credential check failed"
+                }
+        return {
+            "success": True,
+            "mode": "Offline Simulation Mode",
+            "latency_ms": 1,
+            "message": "Offline Simulation Mode active — no Razorpay credentials configured"
+        }
+
+    def fetch_invoices(self) -> list:
+        """Fetches payment links / invoices from Razorpay Test API."""
+        if self.is_live_test_mode:
+            try:
+                res = self.client.payment_link.all({"count": 20})
+                items = res.get("items", []) if isinstance(res, dict) else []
+                return [
+                    {
+                        "id": item.get("id"),
+                        "amount": item.get("amount", 0) / 100.0,
+                        "status": item.get("status"),
+                        "short_url": item.get("short_url"),
+                        "created_at": item.get("created_at")
+                    }
+                    for item in items
+                ]
+            except Exception as e:
+                print(f"[RazorpayAdapter] fetch_invoices error: {e}")
+                return []
+        return []
 
     def create_payment_link(self, amount: float, description: str, customer_name: str, customer_email: str) -> dict:
         """Generates a payment link (Live Test API or Mock)."""
@@ -106,23 +165,37 @@ class RazorpayClientAdapter:
         }
 
     def fetch_payment_status(self, payment_id_or_link_id: str) -> dict:
-        """Fetches payment status for verification."""
-        if self.is_live_test_mode and payment_id_or_link_id.startswith("plink_"):
+        """Fetches payment status for verification from Razorpay Test API."""
+        if self.is_live_test_mode:
             try:
-                res = self.client.payment_link.fetch(payment_id_or_link_id)
-                return {
-                    "status": res.get("status"),
-                    "paid_amount": res.get("amount_paid", 0) / 100.0,
-                    "verified": res.get("status") == "paid"
-                }
-            except Exception:
-                pass
+                if payment_id_or_link_id.startswith("plink_"):
+                    res = self.client.payment_link.fetch(payment_id_or_link_id)
+                    paid_amount = res.get("amount_paid", 0) / 100.0
+                    is_paid = res.get("status") == "paid"
+                    return {
+                        "status": res.get("status"),
+                        "paid_amount": paid_amount,
+                        "verified": is_paid,
+                        "mode": "Razorpay Test Mode"
+                    }
+                elif payment_id_or_link_id.startswith("pay_"):
+                    res = self.client.payment.fetch(payment_id_or_link_id)
+                    is_captured = res.get("status") in ["captured", "authorized"]
+                    return {
+                        "status": res.get("status"),
+                        "paid_amount": res.get("amount", 0) / 100.0,
+                        "verified": is_captured,
+                        "mode": "Razorpay Test Mode"
+                    }
+            except Exception as e:
+                print(f"[RazorpayAdapter] fetch_payment_status error: {e}")
 
-        # Mock fallback status check
+        # Mock fallback — return pending (not auto-verified)
         return {
-            "status": "paid",
+            "status": "created",
             "paid_amount": 0.0,
-            "verified": True
+            "verified": False,
+            "mode": "Offline Simulation Mode"
         }
 
 
