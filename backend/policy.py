@@ -40,8 +40,7 @@ TIER_NAMES = {
     3: "human only escalation — agent will not execute",
 }
 
-# In-memory idempotency locks for duplicate action protection
-_ACTIVE_LOCKS: Dict[str, float] = {}
+# Persistent idempotency locks for duplicate action protection
 LOCK_TTL_SECONDS = 60.0
 
 
@@ -55,13 +54,14 @@ def check_idempotency(case_id: str, action_type: str, history: list) -> Tuple[bo
     now = time.time()
     lock_key = f"{case_id}:{action_type}"
 
-    # Check active lock window
-    if lock_key in _ACTIVE_LOCKS:
-        lock_time = _ACTIVE_LOCKS[lock_key]
-        if now - lock_time < LOCK_TTL_SECONDS:
-            return False, f"Duplicate action blocked — lock active for case {case_id} ({action_type})"
-        else:
-            del _ACTIVE_LOCKS[lock_key]
+    try:
+        from . import store
+    except ImportError:
+        import store
+
+    # Check active persistent database lock window
+    if store.is_lock_active(lock_key, ttl_seconds=LOCK_TTL_SECONDS):
+        return False, f"Duplicate action blocked — persistent DB lock active for case {case_id} ({action_type})"
 
     # Check history for recent identical actions within last hour
     recent_events = [
@@ -75,16 +75,23 @@ def check_idempotency(case_id: str, action_type: str, history: list) -> Tuple[bo
 
 
 def acquire_action_lock(case_id: str, action_type: str):
-    """Acquires a temporary lock for case action execution."""
+    """Acquires a persistent database lock for case action execution."""
     lock_key = f"{case_id}:{action_type}"
-    _ACTIVE_LOCKS[lock_key] = time.time()
+    try:
+        from . import store
+    except ImportError:
+        import store
+    store.acquire_persistent_lock(lock_key)
 
 
 def release_action_lock(case_id: str, action_type: str):
-    """Releases lock after execution."""
+    """Releases persistent database lock after execution."""
     lock_key = f"{case_id}:{action_type}"
-    if lock_key in _ACTIVE_LOCKS:
-        del _ACTIVE_LOCKS[lock_key]
+    try:
+        from . import store
+    except ImportError:
+        import store
+    store.release_persistent_lock(lock_key)
 
 
 def required_tier(case: dict) -> int:

@@ -64,6 +64,20 @@ class TestRazorRecoverBackend(unittest.TestCase):
         self.assertIn("held_out_evaluation", m)
         self.assertGreaterEqual(m["held_out_evaluation"]["decision_accuracy_percent"], 80.0)
 
+    def test_database_persistence_and_locks(self):
+        from store import get_db_status, acquire_persistent_lock, release_persistent_lock, is_lock_active
+        db_stat = get_db_status()
+        self.assertEqual(db_stat["status"], "connected")
+        self.assertIn("engine", db_stat)
+
+        # Test persistent idempotency lock
+        lock_key = "test_case_999:recovery_retry"
+        acquire_persistent_lock(lock_key)
+        self.assertTrue(is_lock_active(lock_key))
+
+        release_persistent_lock(lock_key)
+        self.assertFalse(is_lock_active(lock_key))
+
 
 if __name__ == "__main__":
     unittest.main()

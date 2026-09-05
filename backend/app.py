@@ -43,13 +43,16 @@ def health_check():
     return jsonify({
         "app": "RazorRecover Backend API",
         "status": "online",
+        "database": store.get_db_status(),
         "razorpay_mode": razorpay_adapter.get_mode_info()
     })
 
 
 @app.route("/api/razorpay/status", methods=["GET"])
 def razorpay_status():
-    return jsonify(razorpay_adapter.get_mode_info())
+    res = razorpay_adapter.get_mode_info()
+    res["database"] = store.get_db_status()
+    return jsonify(res)
 
 
 @app.route("/api/razorpay/ping", methods=["POST"])

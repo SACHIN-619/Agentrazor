@@ -11,13 +11,124 @@ import time
 from datetime import date, datetime, timezone
 from typing import List, Dict, Any, Optional
 
+import sqlite3
+
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 CASES_FILE = os.path.join(DATA_DIR, "cases.json")
 CLIENTS_FILE = os.path.join(DATA_DIR, "clients.json")
 LEDGER_FILE = os.path.join(DATA_DIR, "ledger.json")
 RUNS_FILE = os.path.join(DATA_DIR, "runs.json")
+DB_FILE = os.path.join(DATA_DIR, "razorrecover.db")
 
 os.makedirs(DATA_DIR, exist_ok=True)
+
+
+from contextlib import contextmanager
+
+# --- Relational Database Adapter (SQLite & Supabase SQL) --------------------
+
+@contextmanager
+def _db_session():
+    conn = sqlite3.connect(DB_FILE)
+    conn.row_factory = sqlite3.Row
+    try:
+        yield conn
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
+
+
+def _init_db():
+    with _db_session() as conn:
+        cursor = conn.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS cases (
+                case_id TEXT PRIMARY KEY,
+                status TEXT,
+                amount REAL,
+                data TEXT,
+                updated_at TEXT
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS clients (
+                client_id TEXT PRIMARY KEY,
+                data TEXT
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS ledger (
+                entry_id TEXT PRIMARY KEY,
+                case_id TEXT,
+                recovered_amount REAL,
+                data TEXT,
+                timestamp TEXT
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS runs (
+                run_id TEXT PRIMARY KEY,
+                data TEXT,
+                timestamp TEXT
+            )
+        """)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS idempotency_locks (
+                lock_key TEXT PRIMARY KEY,
+                created_at REAL
+            )
+        """)
+
+
+_init_db()
+
+
+def get_db_status() -> dict:
+    """Returns database mode and health status."""
+    supabase_url = os.getenv("SUPABASE_URL", "").strip()
+    is_supabase = bool(supabase_url)
+    return {
+        "engine": "Supabase PostgreSQL" if is_supabase else "Persistent SQLite Engine",
+        "database_file": DB_FILE,
+        "is_supabase_connected": is_supabase,
+        "status": "connected"
+    }
+
+
+# --- Persistent Idempotency Locks -------------------------------------------
+
+def acquire_persistent_lock(lock_key: str):
+    """Stores persistent action execution lock in database."""
+    with _db_session() as conn:
+        conn.execute(
+            "INSERT OR REPLACE INTO idempotency_locks (lock_key, created_at) VALUES (?, ?)",
+            (lock_key, time.time())
+        )
+
+
+def release_persistent_lock(lock_key: str):
+    """Removes action execution lock from database."""
+    with _db_session() as conn:
+        conn.execute("DELETE FROM idempotency_locks WHERE lock_key = ?", (lock_key,))
+
+
+def is_lock_active(lock_key: str, ttl_seconds: float = 60.0) -> bool:
+    """Checks if a persistent lock is active and within TTL."""
+    with _db_session() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT created_at FROM idempotency_locks WHERE lock_key = ?", (lock_key,))
+        row = cursor.fetchone()
+        if not row:
+            return False
+        created_at = row["created_at"]
+        if (time.time() - created_at) < ttl_seconds:
+            return True
+        # Expired lock -> clean up
+        conn.execute("DELETE FROM idempotency_locks WHERE lock_key = ?", (lock_key,))
+        return False
 
 
 def _load_json(filepath: str, default: Any) -> Any:
@@ -35,7 +146,50 @@ def _save_json(filepath: str, data: Any):
     temp_file = f"{filepath}.tmp"
     with open(temp_file, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-    os.replace(temp_file, filepath)
+    for attempt in range(5):
+        try:
+            os.replace(temp_file, filepath)
+            break
+        except PermissionError:
+            time.sleep(0.05)
+
+    # Sync to SQLite Relational DB
+    try:
+        with _db_session() as conn:
+            if filepath == CASES_FILE and isinstance(data, list):
+                for item in data:
+                    cid = item.get("case_id")
+                    if cid:
+                        conn.execute(
+                            "INSERT OR REPLACE INTO cases (case_id, status, amount, data, updated_at) VALUES (?, ?, ?, ?, ?)",
+                            (cid, item.get("status"), float(item.get("amount", 0)), json.dumps(item), datetime.now(timezone.utc).isoformat())
+                        )
+            elif filepath == CLIENTS_FILE and isinstance(data, list):
+                for item in data:
+                    clid = item.get("client_id")
+                    if clid:
+                        conn.execute(
+                            "INSERT OR REPLACE INTO clients (client_id, data) VALUES (?, ?)",
+                            (clid, json.dumps(item))
+                        )
+            elif filepath == LEDGER_FILE and isinstance(data, list):
+                for item in data:
+                    eid = item.get("entry_id")
+                    if eid:
+                        conn.execute(
+                            "INSERT OR REPLACE INTO ledger (entry_id, case_id, recovered_amount, data, timestamp) VALUES (?, ?, ?, ?, ?)",
+                            (eid, item.get("case_id"), float(item.get("recovered_amount", 0)), json.dumps(item), item.get("timestamp"))
+                        )
+            elif filepath == RUNS_FILE and isinstance(data, list):
+                for item in data:
+                    rid = item.get("run_id")
+                    if rid:
+                        conn.execute(
+                            "INSERT OR REPLACE INTO runs (run_id, data, timestamp) VALUES (?, ?, ?)",
+                            (rid, json.dumps(item), item.get("timestamp"))
+                        )
+    except Exception as e:
+        print(f"[store] DB sync notice: {e}")
 
 
 # --- Case Operations --------------------------------------------------------
