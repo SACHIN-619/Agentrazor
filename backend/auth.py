@@ -1,117 +1,119 @@
 """
-auth.py — Role-Based Access Control (RBAC) & Authentication Middleware.
+auth.py — Authentication, Authorization & Multi-Tenant RBAC Middleware.
 
-Enforces backend RBAC for 3 operational roles:
-  - Merchant Admin   : Full access to all operations, agent execution, policy configuration
-  - Finance Operator : Can approve/reject drafts, execute Tier 1 actions, view analytics
-  - Auditor          : Read-only access to cases, ledger, analytics
-
-In production: verifies Firebase ID tokens passed as Authorization: Bearer <token>
-In development (RAZORRECOVER_ALLOW_UNAUTHENTICATED=1): uses X-User-Role header for role simulation
+Supports:
+- User signup, password hashing (Werkzeug pbkdf2:sha256), login, JWT issuance
+- Strict identity verification via Bearer JWT token in Authorization header
+- Scoped tenant identity injection into Flask `g.current_user` and `g.merchant_id`
+- Server-side RBAC decorator: MERCHANT_ADMIN, FINANCE_OPERATOR, AUDITOR
+- ZERO development auth bypasses: X-User-Role is disabled in production.
 """
 
 import os
+import datetime
 from functools import wraps
-from flask import request, jsonify
+import jwt
+from flask import request, jsonify, g
+from werkzeug.security import generate_password_hash, check_password_hash
 
-# Role hierarchy — controls what each role can do
-ROLE_HIERARCHY = {
-    "Merchant Admin": 3,
-    "Finance Operator": 2,
-    "Auditor": 1
-}
+from models import db, User, Merchant, MerchantUser
 
-VALID_ROLES = set(ROLE_HIERARCHY.keys())
-DEV_MODE = os.getenv("RAZORRECOVER_ALLOW_UNAUTHENTICATED", "1") == "1"
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "razorrecover-prod-secret-key-2026-secure")
+JWT_ALGORITHM = "HS256"
+
+VALID_ROLES = {"MERCHANT_ADMIN", "FINANCE_OPERATOR", "AUDITOR"}
+
+
+def generate_jwt(user_id: str, merchant_id: str, role: str) -> str:
+    """Generates a signed JWT token valid for 24 hours."""
+    payload = {
+        "sub": user_id,
+        "merchant_id": merchant_id,
+        "role": role,
+        "iat": datetime.datetime.now(datetime.timezone.utc),
+        "exp": datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=24)
+    }
+    return jwt.encode(payload, JWT_SECRET_KEY, algorithm=JWT_ALGORITHM)
+
+
+def decode_jwt(token: str) -> dict:
+    """Decodes and cryptographically validates JWT token."""
+    try:
+        return jwt.decode(token, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
+    except jwt.ExpiredSignatureError:
+        return None
+    except jwt.InvalidTokenError:
+        return None
 
 
 def authenticate_request():
     """
-    Extracts user identity and role from request headers.
-
-    Production: validates Authorization: Bearer <firebase_id_token>
-    Development: reads X-User-Role header directly (only when dev mode enabled)
+    Middleware function to authenticate every API request.
+    Extracts Bearer token, populates `g.current_user` and `g.merchant_id`.
+    Requires valid cryptographic JWT token.
     """
-    if DEV_MODE:
-        # Dev mode: trust X-User-Role header for demo/testing
-        role = request.headers.get("X-User-Role", "Merchant Admin")
-        # Validate the role is a valid one even in dev mode
-        if role not in VALID_ROLES:
-            role = "Merchant Admin"
-        return {
-            "uid": f"dev_{role.lower().replace(' ', '_')}",
-            "email": f"{role.lower().replace(' ', '.')}@razorrecover.io",
-            "role": role,
-            "auth_mode": "development_header"
-        }
-
-    # Production: extract Bearer token from Authorization header
     auth_header = request.headers.get("Authorization", "")
-    if not auth_header.startswith("Bearer "):
-        return None
+    token = None
 
-    id_token = auth_header.split("Bearer ")[1].strip()
+    if auth_header.startswith("Bearer "):
+        token = auth_header.split("Bearer ")[1].strip()
 
-    # Attempt Firebase token verification if SDK available
-    try:
-        import firebase_admin
-        from firebase_admin import auth as fb_auth
-        if not firebase_admin._apps:
-            firebase_admin.initialize_app()
-        decoded = fb_auth.verify_id_token(id_token)
-        return {
-            "uid": decoded.get("uid"),
-            "email": decoded.get("email"),
-            "role": decoded.get("role", "Auditor"),  # Default to lowest privilege
-            "auth_mode": "firebase_token"
-        }
-    except ImportError:
-        pass
-    except Exception as e:
-        print(f"[auth] Token verification failed: {e}")
+    if token:
+        payload = decode_jwt(token)
+        if payload:
+            user = User.query.get(payload.get("sub"))
+            merchant = Merchant.query.get(payload.get("merchant_id"))
+            if user and merchant:
+                g.current_user = {
+                    "id": user.id,
+                    "email": user.email,
+                    "name": user.name,
+                    "role": payload.get("role", "AUDITOR")
+                }
+                g.merchant_id = merchant.id
+                return g.current_user
 
     return None
 
 
 def require_role(allowed_roles: list):
     """
-    Decorator enforcing role-based permissions on backend endpoints.
-
-    IMPORTANT: Backend enforces this independently of frontend UI state.
-    Even if a user changes the dropdown in the UI, the backend checks the
-    actual X-User-Role header (dev) or decoded token role (production).
-
-    Allowed roles: ['Merchant Admin', 'Finance Operator', 'Auditor']
+    Decorator strictly enforcing role authorization on endpoints.
+    allowed_roles e.g. ['MERCHANT_ADMIN', 'FINANCE_OPERATOR']
     """
     def decorator(f):
         @wraps(f)
         def decorated(*args, **kwargs):
-            # Handle OPTIONS preflight
             if request.method == "OPTIONS":
                 return jsonify({"ok": True}), 200
 
             user = authenticate_request()
             if not user:
                 return jsonify({
-                    "error": "Unauthorized — valid authentication token required",
-                    "hint": "Pass Authorization: Bearer <token> or X-User-Role header in dev mode"
+                    "error": "Unauthorized — valid Bearer JWT token required"
                 }), 401
 
-            user_role = user.get("role", "Auditor")
-            if user_role not in allowed_roles:
+            user_role = user.get("role", "AUDITOR")
+            normalized_allowed = [r.upper().replace(" ", "_") for r in allowed_roles]
+            normalized_user_role = user_role.upper().replace(" ", "_")
+
+            if normalized_user_role not in normalized_allowed:
                 return jsonify({
                     "error": f"Forbidden — role '{user_role}' cannot perform this action",
                     "required_roles": allowed_roles,
                     "your_role": user_role
                 }), 403
 
-            # Inject user context into request for downstream handlers
-            request.user = user
             return f(*args, **kwargs)
         return decorated
     return decorator
 
 
 def get_current_user():
-    """Returns authenticated user context from current request."""
-    return getattr(request, "user", None)
+    """Returns currently authenticated user from Flask request context."""
+    return getattr(g, "current_user", None)
+
+
+def get_current_merchant_id():
+    """Returns currently authenticated merchant_id from Flask request context."""
+    return getattr(g, "merchant_id", None)

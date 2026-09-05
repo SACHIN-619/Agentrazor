@@ -1,8 +1,9 @@
 """
-seed_data.py — 60-Case Evaluation Batch Generator for RazorRecover.
+seed_data.py — Multi-Tenant PostgreSQL Seed Data & 60-Case Evaluation Batch Generator.
 
 Generates 60 synthetic revenue risk cases (40 dev / 20 held-out evaluation)
 labeled with ground-truth expected decisions to verify agent accuracy.
+Seeds PostgreSQL database ORM entities (Merchant, User, Customer, Case, RevenueSignal).
 """
 
 import os
@@ -10,13 +11,11 @@ import json
 import random
 from datetime import datetime, date, timedelta, timezone
 
-DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
-CASES_FILE = os.path.join(DATA_DIR, "cases.json")
-CLIENTS_FILE = os.path.join(DATA_DIR, "clients.json")
-LEDGER_FILE = os.path.join(DATA_DIR, "ledger.json")
-RUNS_FILE = os.path.join(DATA_DIR, "runs.json")
-
-os.makedirs(DATA_DIR, exist_ok=True)
+from models import (
+    db, Merchant, User, MerchantUser, Customer, RevenueSignal, Case, CaseEvent,
+    generate_uuid
+)
+from werkzeug.security import generate_password_hash
 
 CLIENT_NAMES = [
     ("Acme Corp", "finance@acme.com", "Tier A Enterprise"),
@@ -41,135 +40,136 @@ SCENARIOS = [
 
 
 def seed_database(num_cases: int = 60):
-    cases = []
-    clients = []
+    try:
+        # Check if database already has cases
+        existing_cases = Case.query.count()
+        if existing_cases >= num_cases:
+            print(f"[seed_data] Database already contains {existing_cases} cases. Skipping seed.")
+            return
+    except Exception as e:
+        print(f"[seed_data] DB count notice: {e}")
 
-    # Create clients
-    for idx, (name, email, tier) in enumerate(CLIENT_NAMES, start=1):
-        clients.append({
-            "client_id": f"cli_{idx:03d}",
-            "client_name": name,
-            "client_email": email,
-            "relationship_tier": tier,
-            "avg_days_to_pay": random.randint(12, 45),
-            "total_invoices_paid": random.randint(5, 30),
-            "promises_kept_ratio": round(random.uniform(0.7, 0.98), 2)
-        })
+    # 1. Seed Default Merchant
+    merchant = Merchant.query.filter_by(email="demo@razorrecover.io").first()
+    if not merchant:
+        merchant = Merchant(
+            business_name="Apex Enterprise Labs",
+            email="demo@razorrecover.io",
+            environment="TEST"
+        )
+        db.session.add(merchant)
+        db.session.commit()
+
+    # 2. Seed Default Roles Users
+    users_data = [
+        ("Sachin (Admin)", "admin@razorrecover.io", "password123", "MERCHANT_ADMIN"),
+        ("Finance Lead", "finance@razorrecover.io", "password123", "FINANCE_OPERATOR"),
+        ("Compliance Auditor", "auditor@razorrecover.io", "password123", "AUDITOR")
+    ]
+
+    for name, email, password, role in users_data:
+        u = User.query.filter_by(email=email).first()
+        if not u:
+            u = User(name=name, email=email, password_hash=generate_password_hash(password))
+            db.session.add(u)
+            db.session.commit()
+
+            mu = MerchantUser(merchant_id=merchant.id, user_id=u.id, role=role)
+            db.session.add(mu)
+            db.session.commit()
+
+    # 3. Seed Customers
+    customer_objs = []
+    for idx, (cname, cemail, ctier) in enumerate(CLIENT_NAMES, start=1):
+        cust = Customer.query.filter_by(merchant_id=merchant.id, email=cemail).first()
+        if not cust:
+            cust = Customer(
+                merchant_id=merchant.id,
+                external_id=f"cli_{idx:03d}",
+                name=cname,
+                email=cemail,
+                phone=f"+9198765432{idx:02d}"
+            )
+            db.session.add(cust)
+            db.session.commit()
+        customer_objs.append(cust)
 
     today = date.today()
 
     for idx in range(1, num_cases + 1):
-        case_id = f"RR-{1000 + idx}"
-        client = random.choice(clients)
+        case_num = f"RR-{1000 + idx}"
+        cust = customer_objs[(idx - 1) % len(customer_objs)]
         scenario = SCENARIOS[(idx - 1) % len(SCENARIOS)]
-
-        # 40 dev cases (1..40), 20 held-out evaluation cases (41..60)
-        is_eval = idx > 40
 
         amount = 0.0
         disputed_amount = 0.0
-        exception_type = "overdue"
-        authority_tier = 1
         expected_tier = 1
 
         if scenario == "payment_failure":
             amount = round(random.choice([1500, 2800, 4200, 7500, 12000]), 2)
-            exception_type = "payment_failed"
             expected_tier = 2 if amount >= 5000 else 1
-
         elif scenario == "checkout_abandonment":
             amount = round(random.choice([1200, 2500, 3800, 4800, 6500]), 2)
-            exception_type = "checkout_abandoned"
             expected_tier = 2 if amount >= 5000 else 1
-
         elif scenario == "overdue_invoice":
             amount = round(random.choice([3500, 6500, 15000, 28000, 45000]), 2)
-            exception_type = "invoice_overdue"
             expected_tier = 2 if amount >= 5000 else 1
-
         elif scenario == "promise_broken":
             amount = round(random.choice([4500, 8500, 18000, 32000]), 2)
-            exception_type = "promise_broken"
-            expected_tier = 2  # broken promises always require Tier 2 review
-
+            expected_tier = 2
         elif scenario == "dispute":
             amount = round(random.choice([12000, 25000, 50000, 85000]), 2)
             is_full = (idx % 2 == 0)
             if is_full:
-                exception_type = "dispute_full"
                 disputed_amount = amount
-                expected_tier = 3  # full dispute -> Tier 3
+                expected_tier = 3
             else:
-                exception_type = "dispute_partial"
                 disputed_amount = round(amount * 0.3, 2)
                 expected_tier = 2 if disputed_amount < 10000 else 3
 
-        authority_tier = expected_tier
+        # Revenue Signal
+        sig = RevenueSignal(
+            merchant_id=merchant.id,
+            customer_id=cust.id,
+            source="API_SYNC",
+            event_type=f"signal.{scenario}",
+            amount=amount,
+            currency="INR",
+            raw_payload={"scenario": scenario, "disputed_amount": disputed_amount}
+        )
+        db.session.add(sig)
+        db.session.flush()
 
-        # Case History
-        created_days_ago = random.randint(5, 25)
-        created_date = (today - timedelta(days=created_days_ago)).isoformat()
+        # Case
+        c = Case(
+            merchant_id=merchant.id,
+            signal_id=sig.id,
+            customer_id=cust.id,
+            case_number=case_num,
+            status="DETECTED",
+            amount=amount,
+            currency="INR",
+            risk_level="HIGH" if expected_tier >= 2 else "LOW",
+            assigned_tier=expected_tier
+        )
+        db.session.add(c)
+        db.session.flush()
 
-        case_obj = {
-            "case_id": case_id,
-            "invoice_number": f"INV-{202600 + idx}",
-            "client_id": client["client_id"],
-            "client_name": client["client_name"],
-            "client_email": client["client_email"],
-            "amount": amount,
-            "disputed_amount": disputed_amount,
-            "scenario": scenario,
-            "exception_type": exception_type,
-            "authority_tier": authority_tier,
-            "contact_count": 0 if scenario in ["payment_failure", "checkout_abandonment"] else random.randint(1, 2),
-            "retry_count": 0,
-            "status": "open",
-            "outcome": None,
-            "is_held_out_eval": is_eval,
-            "ground_truth": {
-                "expected_tier": expected_tier,
-                "expected_action": "payment_link" if scenario in ["payment_failure", "checkout_abandonment"] else "followup",
-                "recoverable": scenario != "dispute_full"
-            },
-            "history": [
-                {
-                    "timestamp": f"{created_date} 10:00:00",
-                    "event": f"Revenue signal detected ({scenario.replace('_', ' ').title()}). Amount at risk: ₹{amount:,.2f}",
-                    "type": "signal_detected"
-                }
-            ],
-            "created_at": f"{created_date}T10:00:00Z",
-            "updated_at": datetime.now(timezone.utc).isoformat()
-        }
+        # Initial Event
+        ev = CaseEvent(
+            case_id=c.id,
+            from_state=None,
+            to_state="DETECTED",
+            actor_type="SYSTEM",
+            description=f"Revenue signal detected ({scenario.replace('_', ' ').title()}). Risk Amount: ₹{amount:,.2f}"
+        )
+        db.session.add(ev)
 
-        # Add pre-existing payment promise if promise_broken scenario
-        if scenario == "promise_broken":
-            past_promise_date = (today - timedelta(days=2)).isoformat()
-            case_obj["promise_date"] = past_promise_date
-            case_obj["promise_text"] = "We will initiate bank transfer by Friday."
-            case_obj["history"].append({
-                "timestamp": f"{(today - timedelta(days=5)).isoformat()} 14:30:00",
-                "event": f"Client promised payment by {past_promise_date}: 'We will initiate bank transfer by Friday.'",
-                "type": "promise_recorded"
-            })
-
-        cases.append(case_obj)
-
-    # Save to files
-    with open(CASES_FILE, "w", encoding="utf-8") as f:
-        json.dump(cases, f, indent=2)
-
-    with open(CLIENTS_FILE, "w", encoding="utf-8") as f:
-        json.dump(clients, f, indent=2)
-
-    with open(LEDGER_FILE, "w", encoding="utf-8") as f:
-        json.dump([], f, indent=2)
-
-    with open(RUNS_FILE, "w", encoding="utf-8") as f:
-        json.dump([], f, indent=2)
-
-    print(f"[seed_data] Successfully seeded 60 cases (40 dev / 20 held-out evaluation) into {DATA_DIR}")
+    db.session.commit()
+    print(f"[seed_data] Successfully seeded PostgreSQL database with merchant, 3 users, {len(customer_objs)} customers, and {num_cases} cases.")
 
 
 if __name__ == "__main__":
-    seed_database()
+    from app import app
+    with app.app_context():
+        seed_database()
