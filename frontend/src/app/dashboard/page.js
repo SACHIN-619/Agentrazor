@@ -735,7 +735,10 @@ export default function DashboardPage() {
 
       <CsvImportModal
         isOpen={isCsvModalOpen}
-        onClose={() => setIsCsvModalOpen(false)}
+        onClose={() => {
+          setIsCsvModalOpen(false);
+          loadData();
+        }}
         onImportSuccess={() => loadData()}
       />
 
