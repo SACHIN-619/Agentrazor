@@ -217,10 +217,41 @@ npm run dev
 ```
 Frontend application opens on `http://localhost:3000`.
 
-### 4. Running Automated Backend Tests
+### 4. Running Automated Verification Suites & Tests
+
+RazorRecover includes 4 automated verification test suites covering deterministic policy logic, pure JWT security, multi-role RBAC isolation, and live CSV signal ingestion:
+
 ```bash
+# 1. Deterministic Policy Rules & Agent Fallback Unit Tests
 python -m unittest backend/tests/test_correctness.py
+
+# 2. Pure JWT Security & Unauthorized Access Enforcement (HTTP 401/403)
+python backend/tests/test_jwt_verification.py
+
+# 3. Multi-Tenant Role Authentication, Workspace Separation & RBAC
+python backend/tests/test_role_experiences.py
+
+# 4. Live Multi-Part CSV Ingestion & Revenue Signal Parsing
+python backend/tests/test_csv_ingestion_live.py
 ```
+
+> **Testing against Remote Production Deployments:**
+> Set the `TEST_BASE_URL` environment variable to test against Render/Production:
+> ```bash
+> TEST_BASE_URL="https://agentrazor.onrender.com" python backend/tests/test_jwt_verification.py
+> ```
+
+---
+
+## Complete Verification & Test Suite Matrix
+
+| Test Suite | File | Focus Area | Verification Standard |
+| :--- | :--- | :--- | :--- |
+| **Deterministic Policy Engine** | [`backend/tests/test_correctness.py`](file:///backend/tests/test_correctness.py) | Tier 1 (< ₹5k) vs Tier 2 (≥ ₹5k) vs Tier 3 (Escalation) | 100% Deterministic python gate compliance |
+| **Pure JWT Auth & Security** | [`backend/tests/test_jwt_verification.py`](file:///backend/tests/test_jwt_verification.py) | Token forging, missing auth, header tampering | Strict HTTP 401 on forged/missing tokens |
+| **Multi-Role Workspaces & RBAC** | [`backend/tests/test_role_experiences.py`](file:///backend/tests/test_role_experiences.py) | Merchant Admin, Finance Ops, Auditor isolation | Strict HTTP 403 on unauthorized actions |
+| **CSV Ingestion Pipeline** | [`backend/tests/test_csv_ingestion_live.py`](file:///backend/tests/test_csv_ingestion_live.py) | Multi-part file upload, validation, case creation | 4 new cases ingested into PostgreSQL/SQLite |
+| **E2E Next.js Build** | `npm run build` in `frontend/` | 13 dynamic/static Next.js 14 App Router routes | 0 compilation errors or broken imports |
 
 ---
 
