@@ -66,8 +66,11 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 
 with app.app_context():
-    db.create_all()
-    seed_data.seed_database(60)
+    try:
+        db.create_all()
+        seed_data.seed_database(60)
+    except Exception as e:
+        print(f"[app] Database startup notice: {e}")
 
 # Initialize Background Worker Scheduler
 try:
