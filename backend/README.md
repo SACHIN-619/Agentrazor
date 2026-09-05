@@ -1,5 +1,12 @@
 # RazorRecover Backend — Autonomous AI Recovery Engine
 
+[![Backend Live](https://img.shields.io/badge/Production_API-Render_Live-46E3B7.svg?logo=render&logoColor=white)](https://agentrazor.onrender.com/)
+[![Frontend Connected](https://img.shields.io/badge/Frontend-Vercel-000000.svg?logo=vercel&logoColor=white)](https://agentrazor-ochre.vercel.app/)
+[![Python](https://img.shields.io/badge/Python-3.11_Flask-3776AB.svg?logo=python&logoColor=white)]()
+
+> **Live API Production Endpoint**: [**`https://agentrazor.onrender.com/`**](https://agentrazor.onrender.com/)  
+> **Connected Live Web App**: [**`https://agentrazor-ochre.vercel.app/`**](https://agentrazor-ochre.vercel.app/)
+
 The **RazorRecover Backend** is a production-grade Python Flask application and autonomous agent service. It interfaces with Google Gemini LLMs for intelligent root-cause diagnosis, executes bounded recovery actions via Razorpay Test APIs, enforces deterministic Python policy boundaries, and manages multi-tenant state in PostgreSQL/SQLite.
 
 ---

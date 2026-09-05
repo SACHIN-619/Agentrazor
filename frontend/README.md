@@ -1,5 +1,13 @@
 # RazorRecover Frontend — Next.js 14 Web Application
 
+[![Frontend Live](https://img.shields.io/badge/Production_App-Vercel_Live-000000.svg?logo=vercel&logoColor=white)](https://agentrazor-ochre.vercel.app/)
+[![API Connected](https://img.shields.io/badge/Backend_API-Render_Live-46E3B7.svg?logo=render&logoColor=white)](https://agentrazor.onrender.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-14_App_Router-000000.svg?logo=next.js&logoColor=white)]()
+
+> **Live Web Application**: [**`https://agentrazor-ochre.vercel.app/`**](https://agentrazor-ochre.vercel.app/)  
+> **Live Judge Demo Sandbox**: [**`https://agentrazor-ochre.vercel.app/demo`**](https://agentrazor-ochre.vercel.app/demo)  
+> **Backend API Endpoint**: [**`https://agentrazor.onrender.com/`**](https://agentrazor.onrender.com/)
+
 The **RazorRecover Frontend** is a modern, responsive web application built with **Next.js 14 (App Router)** and Vanilla CSS design tokens. It provides a dual-experience interface tailored for both interactive hackathon evaluation and real-world merchant operations:
 
 1. **Isolated Judge Demo Sandbox (`/demo`)**: Scripted, interactive walkthrough of Tier 1 autonomous recovery (₹4,800) and Tier 2 human approval gates (₹28,000) with explicit synthetic indicators.

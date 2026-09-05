@@ -1,10 +1,29 @@
 # RazorRecover — Autonomous AI Revenue Recovery Agent
 
 [![Razorpay Hackathon](https://img.shields.io/badge/Razorpay_Hackathon-Track_03_AI_Revenue_Recovery-blue.svg)](https://razorpay.com/buildathon/)
-[![Python](https://img.shields.io/badge/Backend-Python_Flask_--_Gemini_ADK-emerald.svg)]()
-[![Next.js](https://img.shields.io/badge/Frontend-Next.js_14_App_Router-purple.svg)]()
+[![Frontend Live](https://img.shields.io/badge/Frontend-Vercel_Production-000000.svg?logo=vercel&logoColor=white)](https://agentrazor-ochre.vercel.app/)
+[![Backend Live](https://img.shields.io/badge/Backend-Render_API-46E3B7.svg?logo=render&logoColor=white)](https://agentrazor.onrender.com/)
+[![Python](https://img.shields.io/badge/Python-3.11_Flask_--_Gemini_ADK-3776AB.svg?logo=python&logoColor=white)]()
+[![Next.js](https://img.shields.io/badge/Next.js-14_App_Router-000000.svg?logo=next.js&logoColor=white)]()
 
 > **RazorRecover** is an autonomous merchant-side AI agent that detects slipping revenue, diagnoses the root cause, selects bounded recovery interventions, executes actions via Razorpay Test APIs / customer channels, verifies payment evidence before closing, and measures actual revenue recovered across a batch — with deterministic safety bounds, human approval gates, idempotency safeguards, and safe stopping rules.
+
+---
+
+## 🌐 Live Deployed Application & Demo Links
+
+| Service | Environment | Live URL | Description |
+| :--- | :--- | :--- | :--- |
+| 🚀 **Web App (Frontend)** | **Vercel** | [**`https://agentrazor-ochre.vercel.app/`**](https://agentrazor-ochre.vercel.app/) | Next.js 14 Merchant Workspace & Control Room |
+| 🟣 **Judge Demo Sandbox** | **Vercel** | [**`https://agentrazor-ochre.vercel.app/demo`**](https://agentrazor-ochre.vercel.app/demo) | 2 Interactive Scenarios (₹4,800 Tier 1 & ₹28,000 Tier 2) |
+| ⚙️ **API Engine (Backend)**| **Render** | [**`https://agentrazor.onrender.com/`**](https://agentrazor.onrender.com/) | Autonomous Agent Flask API & Gemini Service |
+| 🗄️ **Database Cluster** | **Supabase** | `aws-0-ap-south-1.pooler.supabase.com:6543` | PostgreSQL Multi-Tenant Relational Store |
+
+### 🔑 Instant Hackathon Demo Credentials
+Judges and evaluators can log in immediately on [**`/login`**](https://agentrazor-ochre.vercel.app/login) using the one-click quick-fill buttons or:
+- **👑 Merchant Admin**: `admin@razorrecover.io` / `password123`
+- **💼 Finance Operator**: `finance@razorrecover.io` / `password123`
+- **🔍 Auditor**: `auditor@razorrecover.io` / `password123`
 
 ---
 
