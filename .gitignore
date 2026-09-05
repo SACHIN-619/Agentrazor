@@ -20,6 +20,8 @@ dist/
 .env.development.local
 .env.test.local
 .env.production.local
+Event_Loop/
+PII/
 
 # IDE & System files
 .vscode/
