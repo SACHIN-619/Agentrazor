@@ -5,654 +5,6 @@
     "client_id": "cli_003",
     "client_name": "Orbit Tech",
     "client_email": "billing@orbittech.com",
-    "amount": 12000,
-    "disputed_amount": 0.0,
-    "scenario": "payment_failure",
-    "exception_type": "payment_failed",
-    "authority_tier": 2,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-25 10:00:00",
-        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b912,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-25T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655438+00:00"
-  },
-  {
-    "case_id": "RR-1002",
-    "invoice_number": "INV-202602",
-    "client_id": "cli_005",
-    "client_name": "Apex Dynamics",
-    "client_email": "invoice@apexdynamics.org",
-    "amount": 3800,
-    "disputed_amount": 0.0,
-    "scenario": "checkout_abandonment",
-    "exception_type": "checkout_abandoned",
-    "authority_tier": 1,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 1,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-17 10:00:00",
-        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b93,800.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-17T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655499+00:00"
-  },
-  {
-    "case_id": "RR-1003",
-    "invoice_number": "INV-202603",
-    "client_id": "cli_007",
-    "client_name": "Zenith Health",
-    "client_email": "ap@zenithhealth.com",
-    "amount": 15000,
-    "disputed_amount": 0.0,
-    "scenario": "overdue_invoice",
-    "exception_type": "invoice_overdue",
-    "authority_tier": 2,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-17 10:00:00",
-        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b915,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-17T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655541+00:00"
-  },
-  {
-    "case_id": "RR-1004",
-    "invoice_number": "INV-202604",
-    "client_id": "cli_007",
-    "client_name": "Zenith Health",
-    "client_email": "ap@zenithhealth.com",
-    "amount": 18000,
-    "disputed_amount": 0.0,
-    "scenario": "promise_broken",
-    "exception_type": "promise_broken",
-    "authority_tier": 2,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-13 10:00:00",
-        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b918,000.00",
-        "type": "signal_detected"
-      },
-      {
-        "timestamp": "2026-08-30 14:30:00",
-        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
-        "type": "promise_recorded"
-      }
-    ],
-    "created_at": "2026-08-13T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655577+00:00",
-    "promise_date": "2026-09-02",
-    "promise_text": "We will initiate bank transfer by Friday."
-  },
-  {
-    "case_id": "RR-1005",
-    "invoice_number": "INV-202605",
-    "client_id": "cli_007",
-    "client_name": "Zenith Health",
-    "client_email": "ap@zenithhealth.com",
-    "amount": 50000,
-    "disputed_amount": 15000.0,
-    "scenario": "dispute",
-    "exception_type": "dispute_partial",
-    "authority_tier": 3,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 3,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-23 10:00:00",
-        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b950,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-23T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655642+00:00"
-  },
-  {
-    "case_id": "RR-1006",
-    "invoice_number": "INV-202606",
-    "client_id": "cli_006",
-    "client_name": "Starlight Retail",
-    "client_email": "vendor@starlight.in",
-    "amount": 12000,
-    "disputed_amount": 0.0,
-    "scenario": "payment_failure",
-    "exception_type": "payment_failed",
-    "authority_tier": 2,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-30 10:00:00",
-        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b912,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-30T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655679+00:00"
-  },
-  {
-    "case_id": "RR-1007",
-    "invoice_number": "INV-202607",
-    "client_id": "cli_004",
-    "client_name": "Nexus Systems",
-    "client_email": "pay@nexussystems.com",
-    "amount": 6500,
-    "disputed_amount": 0.0,
-    "scenario": "checkout_abandonment",
-    "exception_type": "checkout_abandoned",
-    "authority_tier": 2,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-23 10:00:00",
-        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b96,500.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-23T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655708+00:00"
-  },
-  {
-    "case_id": "RR-1008",
-    "invoice_number": "INV-202608",
-    "client_id": "cli_010",
-    "client_name": "Hyperion AI",
-    "client_email": "billing@hyperionai.com",
-    "amount": 28000,
-    "disputed_amount": 0.0,
-    "scenario": "overdue_invoice",
-    "exception_type": "invoice_overdue",
-    "authority_tier": 2,
-    "contact_count": 1,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-24 10:00:00",
-        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b928,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-24T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655737+00:00"
-  },
-  {
-    "case_id": "RR-1009",
-    "invoice_number": "INV-202609",
-    "client_id": "cli_001",
-    "client_name": "Acme Corp",
-    "client_email": "finance@acme.com",
-    "amount": 18000,
-    "disputed_amount": 0.0,
-    "scenario": "promise_broken",
-    "exception_type": "promise_broken",
-    "authority_tier": 2,
-    "contact_count": 1,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-12 10:00:00",
-        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b918,000.00",
-        "type": "signal_detected"
-      },
-      {
-        "timestamp": "2026-08-30 14:30:00",
-        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
-        "type": "promise_recorded"
-      }
-    ],
-    "created_at": "2026-08-12T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655768+00:00",
-    "promise_date": "2026-09-02",
-    "promise_text": "We will initiate bank transfer by Friday."
-  },
-  {
-    "case_id": "RR-1010",
-    "invoice_number": "INV-202610",
-    "client_id": "cli_002",
-    "client_name": "Nova Labs",
-    "client_email": "accounts@novalabs.io",
-    "amount": 85000,
-    "disputed_amount": 85000,
-    "scenario": "dispute",
-    "exception_type": "dispute_full",
-    "authority_tier": 3,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 3,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-23 10:00:00",
-        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b985,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-23T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655813+00:00"
-  },
-  {
-    "case_id": "RR-1011",
-    "invoice_number": "INV-202611",
-    "client_id": "cli_009",
-    "client_name": "Pulse Logistics",
-    "client_email": "accounts@pulselogistics.com",
-    "amount": 2800,
-    "disputed_amount": 0.0,
-    "scenario": "payment_failure",
-    "exception_type": "payment_failed",
-    "authority_tier": 1,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 1,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-17 10:00:00",
-        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b92,800.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-17T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655865+00:00"
-  },
-  {
-    "case_id": "RR-1012",
-    "invoice_number": "INV-202612",
-    "client_id": "cli_009",
-    "client_name": "Pulse Logistics",
-    "client_email": "accounts@pulselogistics.com",
-    "amount": 1200,
-    "disputed_amount": 0.0,
-    "scenario": "checkout_abandonment",
-    "exception_type": "checkout_abandoned",
-    "authority_tier": 1,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 1,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-29 10:00:00",
-        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b91,200.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-29T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655912+00:00"
-  },
-  {
-    "case_id": "RR-1013",
-    "invoice_number": "INV-202613",
-    "client_id": "cli_002",
-    "client_name": "Nova Labs",
-    "client_email": "accounts@novalabs.io",
-    "amount": 28000,
-    "disputed_amount": 0.0,
-    "scenario": "overdue_invoice",
-    "exception_type": "invoice_overdue",
-    "authority_tier": 2,
-    "contact_count": 1,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-10 10:00:00",
-        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b928,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-10T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.655978+00:00"
-  },
-  {
-    "case_id": "RR-1014",
-    "invoice_number": "INV-202614",
-    "client_id": "cli_010",
-    "client_name": "Hyperion AI",
-    "client_email": "billing@hyperionai.com",
-    "amount": 8500,
-    "disputed_amount": 0.0,
-    "scenario": "promise_broken",
-    "exception_type": "promise_broken",
-    "authority_tier": 2,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-29 10:00:00",
-        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b98,500.00",
-        "type": "signal_detected"
-      },
-      {
-        "timestamp": "2026-08-30 14:30:00",
-        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
-        "type": "promise_recorded"
-      }
-    ],
-    "created_at": "2026-08-29T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656031+00:00",
-    "promise_date": "2026-09-02",
-    "promise_text": "We will initiate bank transfer by Friday."
-  },
-  {
-    "case_id": "RR-1015",
-    "invoice_number": "INV-202615",
-    "client_id": "cli_009",
-    "client_name": "Pulse Logistics",
-    "client_email": "accounts@pulselogistics.com",
-    "amount": 85000,
-    "disputed_amount": 25500.0,
-    "scenario": "dispute",
-    "exception_type": "dispute_partial",
-    "authority_tier": 3,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 3,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-30 10:00:00",
-        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b985,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-30T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656099+00:00"
-  },
-  {
-    "case_id": "RR-1016",
-    "invoice_number": "INV-202616",
-    "client_id": "cli_004",
-    "client_name": "Nexus Systems",
-    "client_email": "pay@nexussystems.com",
-    "amount": 4200,
-    "disputed_amount": 0.0,
-    "scenario": "payment_failure",
-    "exception_type": "payment_failed",
-    "authority_tier": 1,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 1,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-22 10:00:00",
-        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b94,200.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-22T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656154+00:00"
-  },
-  {
-    "case_id": "RR-1017",
-    "invoice_number": "INV-202617",
-    "client_id": "cli_005",
-    "client_name": "Apex Dynamics",
-    "client_email": "invoice@apexdynamics.org",
-    "amount": 4800,
-    "disputed_amount": 0.0,
-    "scenario": "checkout_abandonment",
-    "exception_type": "checkout_abandoned",
-    "authority_tier": 1,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 1,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-24 10:00:00",
-        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b94,800.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-24T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656205+00:00"
-  },
-  {
-    "case_id": "RR-1018",
-    "invoice_number": "INV-202618",
-    "client_id": "cli_007",
-    "client_name": "Zenith Health",
-    "client_email": "ap@zenithhealth.com",
-    "amount": 45000,
-    "disputed_amount": 0.0,
-    "scenario": "overdue_invoice",
-    "exception_type": "invoice_overdue",
-    "authority_tier": 2,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-29 10:00:00",
-        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b945,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-29T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656255+00:00"
-  },
-  {
-    "case_id": "RR-1019",
-    "invoice_number": "INV-202619",
-    "client_id": "cli_008",
-    "client_name": "Vortex Media",
-    "client_email": "finance@vortexmedia.in",
-    "amount": 32000,
-    "disputed_amount": 0.0,
-    "scenario": "promise_broken",
-    "exception_type": "promise_broken",
-    "authority_tier": 2,
-    "contact_count": 1,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-15 10:00:00",
-        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b932,000.00",
-        "type": "signal_detected"
-      },
-      {
-        "timestamp": "2026-08-30 14:30:00",
-        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
-        "type": "promise_recorded"
-      }
-    ],
-    "created_at": "2026-08-15T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656295+00:00",
-    "promise_date": "2026-09-02",
-    "promise_text": "We will initiate bank transfer by Friday."
-  },
-  {
-    "case_id": "RR-1020",
-    "invoice_number": "INV-202620",
-    "client_id": "cli_007",
-    "client_name": "Zenith Health",
-    "client_email": "ap@zenithhealth.com",
-    "amount": 25000,
-    "disputed_amount": 25000,
-    "scenario": "dispute",
-    "exception_type": "dispute_full",
-    "authority_tier": 3,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 3,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-16 10:00:00",
-        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b925,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-16T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656365+00:00"
-  },
-  {
-    "case_id": "RR-1021",
-    "invoice_number": "INV-202621",
-    "client_id": "cli_010",
-    "client_name": "Hyperion AI",
-    "client_email": "billing@hyperionai.com",
     "amount": 1500,
     "disputed_amount": 0.0,
     "scenario": "payment_failure",
@@ -670,21 +22,21 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-16 10:00:00",
+        "timestamp": "2026-08-22 10:00:00",
         "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b91,500.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-16T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656419+00:00"
+    "created_at": "2026-08-22T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472545+00:00"
   },
   {
-    "case_id": "RR-1022",
-    "invoice_number": "INV-202622",
-    "client_id": "cli_007",
-    "client_name": "Zenith Health",
-    "client_email": "ap@zenithhealth.com",
-    "amount": 4800,
+    "case_id": "RR-1002",
+    "invoice_number": "INV-202602",
+    "client_id": "cli_001",
+    "client_name": "Acme Corp",
+    "client_email": "finance@acme.com",
+    "amount": 2500,
     "disputed_amount": 0.0,
     "scenario": "checkout_abandonment",
     "exception_type": "checkout_abandoned",
@@ -701,20 +53,182 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-12 10:00:00",
-        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b94,800.00",
+        "timestamp": "2026-08-28 10:00:00",
+        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b92,500.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-12T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656466+00:00"
+    "created_at": "2026-08-28T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472578+00:00"
   },
   {
-    "case_id": "RR-1023",
-    "invoice_number": "INV-202623",
-    "client_id": "cli_006",
-    "client_name": "Starlight Retail",
-    "client_email": "vendor@starlight.in",
+    "case_id": "RR-1003",
+    "invoice_number": "INV-202603",
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 45000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-29 10:00:00",
+        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b945,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-29T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472602+00:00"
+  },
+  {
+    "case_id": "RR-1004",
+    "invoice_number": "INV-202604",
+    "client_id": "cli_002",
+    "client_name": "Nova Labs",
+    "client_email": "accounts@novalabs.io",
+    "amount": 8500,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-10 10:00:00",
+        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b98,500.00",
+        "type": "signal_detected"
+      },
+      {
+        "timestamp": "2026-08-30 14:30:00",
+        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
+        "type": "promise_recorded"
+      }
+    ],
+    "created_at": "2026-08-10T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472622+00:00",
+    "promise_date": "2026-09-02",
+    "promise_text": "We will initiate bank transfer by Friday."
+  },
+  {
+    "case_id": "RR-1005",
+    "invoice_number": "INV-202605",
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 85000,
+    "disputed_amount": 25500.0,
+    "scenario": "dispute",
+    "exception_type": "dispute_partial",
+    "authority_tier": 3,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-30 10:00:00",
+        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b985,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-30T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472649+00:00"
+  },
+  {
+    "case_id": "RR-1006",
+    "invoice_number": "INV-202606",
+    "client_id": "cli_002",
+    "client_name": "Nova Labs",
+    "client_email": "accounts@novalabs.io",
+    "amount": 12000,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 2,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-21 10:00:00",
+        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b912,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-21T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472666+00:00"
+  },
+  {
+    "case_id": "RR-1007",
+    "invoice_number": "INV-202607",
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 3800,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-29 10:00:00",
+        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b93,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-29T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472686+00:00"
+  },
+  {
+    "case_id": "RR-1008",
+    "invoice_number": "INV-202608",
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
     "amount": 15000,
     "disputed_amount": 0.0,
     "scenario": "overdue_invoice",
@@ -732,20 +246,20 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-30 10:00:00",
+        "timestamp": "2026-08-29 10:00:00",
         "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b915,000.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-30T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656527+00:00"
+    "created_at": "2026-08-29T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472703+00:00"
   },
   {
-    "case_id": "RR-1024",
-    "invoice_number": "INV-202624",
-    "client_id": "cli_005",
-    "client_name": "Apex Dynamics",
-    "client_email": "invoice@apexdynamics.org",
+    "case_id": "RR-1009",
+    "invoice_number": "INV-202609",
+    "client_id": "cli_007",
+    "client_name": "Zenith Health",
+    "client_email": "ap@zenithhealth.com",
     "amount": 32000,
     "disputed_amount": 0.0,
     "scenario": "promise_broken",
@@ -763,7 +277,7 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-18 10:00:00",
+        "timestamp": "2026-08-11 10:00:00",
         "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b932,000.00",
         "type": "signal_detected"
       },
@@ -773,14 +287,176 @@
         "type": "promise_recorded"
       }
     ],
-    "created_at": "2026-08-18T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656580+00:00",
+    "created_at": "2026-08-11T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472717+00:00",
     "promise_date": "2026-09-02",
     "promise_text": "We will initiate bank transfer by Friday."
   },
   {
-    "case_id": "RR-1025",
-    "invoice_number": "INV-202625",
+    "case_id": "RR-1010",
+    "invoice_number": "INV-202610",
+    "client_id": "cli_009",
+    "client_name": "Pulse Logistics",
+    "client_email": "accounts@pulselogistics.com",
+    "amount": 12000,
+    "disputed_amount": 12000,
+    "scenario": "dispute",
+    "exception_type": "dispute_full",
+    "authority_tier": 3,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-28 10:00:00",
+        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b912,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-28T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472738+00:00"
+  },
+  {
+    "case_id": "RR-1011",
+    "invoice_number": "INV-202611",
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 12000,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 2,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-25 10:00:00",
+        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b912,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-25T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472756+00:00"
+  },
+  {
+    "case_id": "RR-1012",
+    "invoice_number": "INV-202612",
+    "client_id": "cli_004",
+    "client_name": "Nexus Systems",
+    "client_email": "pay@nexussystems.com",
+    "amount": 6500,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 2,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-18 10:00:00",
+        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b96,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-18T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472770+00:00"
+  },
+  {
+    "case_id": "RR-1013",
+    "invoice_number": "INV-202613",
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 3500,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 1,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-23 10:00:00",
+        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b93,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-23T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472784+00:00"
+  },
+  {
+    "case_id": "RR-1014",
+    "invoice_number": "INV-202614",
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 4500,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-27 10:00:00",
+        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b94,500.00",
+        "type": "signal_detected"
+      },
+      {
+        "timestamp": "2026-08-30 14:30:00",
+        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
+        "type": "promise_recorded"
+      }
+    ],
+    "created_at": "2026-08-27T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472799+00:00",
+    "promise_date": "2026-09-02",
+    "promise_text": "We will initiate bank transfer by Friday."
+  },
+  {
+    "case_id": "RR-1015",
+    "invoice_number": "INV-202615",
     "client_id": "cli_002",
     "client_name": "Nova Labs",
     "client_email": "accounts@novalabs.io",
@@ -801,179 +477,17 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-17 10:00:00",
+        "timestamp": "2026-08-28 10:00:00",
         "event": "Revenue signal detected (Dispute). Amount at risk: \u20b950,000.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-17T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656661+00:00"
+    "created_at": "2026-08-28T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472832+00:00"
   },
   {
-    "case_id": "RR-1026",
-    "invoice_number": "INV-202626",
-    "client_id": "cli_009",
-    "client_name": "Pulse Logistics",
-    "client_email": "accounts@pulselogistics.com",
-    "amount": 4200,
-    "disputed_amount": 0.0,
-    "scenario": "payment_failure",
-    "exception_type": "payment_failed",
-    "authority_tier": 1,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 1,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-18 10:00:00",
-        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b94,200.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-18T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656706+00:00"
-  },
-  {
-    "case_id": "RR-1027",
-    "invoice_number": "INV-202627",
-    "client_id": "cli_003",
-    "client_name": "Orbit Tech",
-    "client_email": "billing@orbittech.com",
-    "amount": 1200,
-    "disputed_amount": 0.0,
-    "scenario": "checkout_abandonment",
-    "exception_type": "checkout_abandoned",
-    "authority_tier": 1,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 1,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-16 10:00:00",
-        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b91,200.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-16T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656755+00:00"
-  },
-  {
-    "case_id": "RR-1028",
-    "invoice_number": "INV-202628",
-    "client_id": "cli_008",
-    "client_name": "Vortex Media",
-    "client_email": "finance@vortexmedia.in",
-    "amount": 15000,
-    "disputed_amount": 0.0,
-    "scenario": "overdue_invoice",
-    "exception_type": "invoice_overdue",
-    "authority_tier": 2,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-30 10:00:00",
-        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b915,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-30T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656805+00:00"
-  },
-  {
-    "case_id": "RR-1029",
-    "invoice_number": "INV-202629",
-    "client_id": "cli_005",
-    "client_name": "Apex Dynamics",
-    "client_email": "invoice@apexdynamics.org",
-    "amount": 32000,
-    "disputed_amount": 0.0,
-    "scenario": "promise_broken",
-    "exception_type": "promise_broken",
-    "authority_tier": 2,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-16 10:00:00",
-        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b932,000.00",
-        "type": "signal_detected"
-      },
-      {
-        "timestamp": "2026-08-30 14:30:00",
-        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
-        "type": "promise_recorded"
-      }
-    ],
-    "created_at": "2026-08-16T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656864+00:00",
-    "promise_date": "2026-09-02",
-    "promise_text": "We will initiate bank transfer by Friday."
-  },
-  {
-    "case_id": "RR-1030",
-    "invoice_number": "INV-202630",
-    "client_id": "cli_002",
-    "client_name": "Nova Labs",
-    "client_email": "accounts@novalabs.io",
-    "amount": 12000,
-    "disputed_amount": 12000,
-    "scenario": "dispute",
-    "exception_type": "dispute_full",
-    "authority_tier": 3,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 3,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-23 10:00:00",
-        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b912,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-23T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656918+00:00"
-  },
-  {
-    "case_id": "RR-1031",
-    "invoice_number": "INV-202631",
+    "case_id": "RR-1016",
+    "invoice_number": "INV-202616",
     "client_id": "cli_004",
     "client_name": "Nexus Systems",
     "client_email": "pay@nexussystems.com",
@@ -994,21 +508,21 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-10 10:00:00",
+        "timestamp": "2026-08-23 10:00:00",
         "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b92,800.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-10T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.656971+00:00"
+    "created_at": "2026-08-23T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472853+00:00"
   },
   {
-    "case_id": "RR-1032",
-    "invoice_number": "INV-202632",
-    "client_id": "cli_007",
-    "client_name": "Zenith Health",
-    "client_email": "ap@zenithhealth.com",
-    "amount": 1200,
+    "case_id": "RR-1017",
+    "invoice_number": "INV-202617",
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 2500,
     "disputed_amount": 0.0,
     "scenario": "checkout_abandonment",
     "exception_type": "checkout_abandoned",
@@ -1025,21 +539,183 @@
     },
     "history": [
       {
+        "timestamp": "2026-08-21 10:00:00",
+        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b92,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-21T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472878+00:00"
+  },
+  {
+    "case_id": "RR-1018",
+    "invoice_number": "INV-202618",
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 15000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-16 10:00:00",
+        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b915,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-16T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472894+00:00"
+  },
+  {
+    "case_id": "RR-1019",
+    "invoice_number": "INV-202619",
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 4500,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-24 10:00:00",
+        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b94,500.00",
+        "type": "signal_detected"
+      },
+      {
+        "timestamp": "2026-08-30 14:30:00",
+        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
+        "type": "promise_recorded"
+      }
+    ],
+    "created_at": "2026-08-24T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472907+00:00",
+    "promise_date": "2026-09-02",
+    "promise_text": "We will initiate bank transfer by Friday."
+  },
+  {
+    "case_id": "RR-1020",
+    "invoice_number": "INV-202620",
+    "client_id": "cli_009",
+    "client_name": "Pulse Logistics",
+    "client_email": "accounts@pulselogistics.com",
+    "amount": 25000,
+    "disputed_amount": 25000,
+    "scenario": "dispute",
+    "exception_type": "dispute_full",
+    "authority_tier": 3,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-25 10:00:00",
+        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b925,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-25T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472927+00:00"
+  },
+  {
+    "case_id": "RR-1021",
+    "invoice_number": "INV-202621",
+    "client_id": "cli_007",
+    "client_name": "Zenith Health",
+    "client_email": "ap@zenithhealth.com",
+    "amount": 7500,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 2,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
         "timestamp": "2026-08-20 10:00:00",
-        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b91,200.00",
+        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b97,500.00",
         "type": "signal_detected"
       }
     ],
     "created_at": "2026-08-20T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657015+00:00"
+    "updated_at": "2026-09-04T16:32:55.472941+00:00"
   },
   {
-    "case_id": "RR-1033",
-    "invoice_number": "INV-202633",
-    "client_id": "cli_010",
-    "client_name": "Hyperion AI",
-    "client_email": "billing@hyperionai.com",
-    "amount": 28000,
+    "case_id": "RR-1022",
+    "invoice_number": "INV-202622",
+    "client_id": "cli_007",
+    "client_name": "Zenith Health",
+    "client_email": "ap@zenithhealth.com",
+    "amount": 3800,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-22 10:00:00",
+        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b93,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-22T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472954+00:00"
+  },
+  {
+    "case_id": "RR-1023",
+    "invoice_number": "INV-202623",
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 45000,
     "disputed_amount": 0.0,
     "scenario": "overdue_invoice",
     "exception_type": "invoice_overdue",
@@ -1057,19 +733,343 @@
     "history": [
       {
         "timestamp": "2026-08-20 10:00:00",
-        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b928,000.00",
+        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b945,000.00",
         "type": "signal_detected"
       }
     ],
     "created_at": "2026-08-20T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657070+00:00"
+    "updated_at": "2026-09-04T16:32:55.472970+00:00"
+  },
+  {
+    "case_id": "RR-1024",
+    "invoice_number": "INV-202624",
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 18000,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-13 10:00:00",
+        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b918,000.00",
+        "type": "signal_detected"
+      },
+      {
+        "timestamp": "2026-08-30 14:30:00",
+        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
+        "type": "promise_recorded"
+      }
+    ],
+    "created_at": "2026-08-13T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.472984+00:00",
+    "promise_date": "2026-09-02",
+    "promise_text": "We will initiate bank transfer by Friday."
+  },
+  {
+    "case_id": "RR-1025",
+    "invoice_number": "INV-202625",
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 25000,
+    "disputed_amount": 7500.0,
+    "scenario": "dispute",
+    "exception_type": "dispute_partial",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-24 10:00:00",
+        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b925,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-24T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473003+00:00"
+  },
+  {
+    "case_id": "RR-1026",
+    "invoice_number": "INV-202626",
+    "client_id": "cli_009",
+    "client_name": "Pulse Logistics",
+    "client_email": "accounts@pulselogistics.com",
+    "amount": 1500,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-13 10:00:00",
+        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b91,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-13T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473015+00:00"
+  },
+  {
+    "case_id": "RR-1027",
+    "invoice_number": "INV-202627",
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 4800,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-21 10:00:00",
+        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b94,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-21T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473029+00:00"
+  },
+  {
+    "case_id": "RR-1028",
+    "invoice_number": "INV-202628",
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 6500,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-23 10:00:00",
+        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b96,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-23T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473045+00:00"
+  },
+  {
+    "case_id": "RR-1029",
+    "invoice_number": "INV-202629",
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 4500,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-11 10:00:00",
+        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b94,500.00",
+        "type": "signal_detected"
+      },
+      {
+        "timestamp": "2026-08-30 14:30:00",
+        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
+        "type": "promise_recorded"
+      }
+    ],
+    "created_at": "2026-08-11T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473058+00:00",
+    "promise_date": "2026-09-02",
+    "promise_text": "We will initiate bank transfer by Friday."
+  },
+  {
+    "case_id": "RR-1030",
+    "invoice_number": "INV-202630",
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 25000,
+    "disputed_amount": 25000,
+    "scenario": "dispute",
+    "exception_type": "dispute_full",
+    "authority_tier": 3,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-14 10:00:00",
+        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b925,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-14T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473076+00:00"
+  },
+  {
+    "case_id": "RR-1031",
+    "invoice_number": "INV-202631",
+    "client_id": "cli_001",
+    "client_name": "Acme Corp",
+    "client_email": "finance@acme.com",
+    "amount": 4200,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-26 10:00:00",
+        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b94,200.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-26T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473092+00:00"
+  },
+  {
+    "case_id": "RR-1032",
+    "invoice_number": "INV-202632",
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 1200,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-28 10:00:00",
+        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b91,200.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-28T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473105+00:00"
+  },
+  {
+    "case_id": "RR-1033",
+    "invoice_number": "INV-202633",
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 3500,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 1,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-11 10:00:00",
+        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b93,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-11T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473117+00:00"
   },
   {
     "case_id": "RR-1034",
     "invoice_number": "INV-202634",
-    "client_id": "cli_008",
-    "client_name": "Vortex Media",
-    "client_email": "finance@vortexmedia.in",
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
     "amount": 8500,
     "disputed_amount": 0.0,
     "scenario": "promise_broken",
@@ -1087,7 +1087,7 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-17 10:00:00",
+        "timestamp": "2026-08-20 10:00:00",
         "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b98,500.00",
         "type": "signal_detected"
       },
@@ -1097,17 +1097,17 @@
         "type": "promise_recorded"
       }
     ],
-    "created_at": "2026-08-17T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657104+00:00",
+    "created_at": "2026-08-20T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473133+00:00",
     "promise_date": "2026-09-02",
     "promise_text": "We will initiate bank transfer by Friday."
   },
   {
     "case_id": "RR-1035",
     "invoice_number": "INV-202635",
-    "client_id": "cli_003",
-    "client_name": "Orbit Tech",
-    "client_email": "billing@orbittech.com",
+    "client_id": "cli_002",
+    "client_name": "Nova Labs",
+    "client_email": "accounts@novalabs.io",
     "amount": 12000,
     "disputed_amount": 3600.0,
     "scenario": "dispute",
@@ -1125,21 +1125,21 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-29 10:00:00",
+        "timestamp": "2026-08-23 10:00:00",
         "event": "Revenue signal detected (Dispute). Amount at risk: \u20b912,000.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-29T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657156+00:00"
+    "created_at": "2026-08-23T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473154+00:00"
   },
   {
     "case_id": "RR-1036",
     "invoice_number": "INV-202636",
-    "client_id": "cli_007",
-    "client_name": "Zenith Health",
-    "client_email": "ap@zenithhealth.com",
-    "amount": 2800,
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 1500,
     "disputed_amount": 0.0,
     "scenario": "payment_failure",
     "exception_type": "payment_failed",
@@ -1156,21 +1156,21 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-23 10:00:00",
-        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b92,800.00",
+        "timestamp": "2026-08-11 10:00:00",
+        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b91,500.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-23T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657203+00:00"
+    "created_at": "2026-08-11T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473167+00:00"
   },
   {
     "case_id": "RR-1037",
     "invoice_number": "INV-202637",
-    "client_id": "cli_002",
-    "client_name": "Nova Labs",
-    "client_email": "accounts@novalabs.io",
-    "amount": 1200,
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 3800,
     "disputed_amount": 0.0,
     "scenario": "checkout_abandonment",
     "exception_type": "checkout_abandoned",
@@ -1187,57 +1187,26 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-14 10:00:00",
-        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b91,200.00",
+        "timestamp": "2026-08-28 10:00:00",
+        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b93,800.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-14T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657241+00:00"
+    "created_at": "2026-08-28T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473179+00:00"
   },
   {
     "case_id": "RR-1038",
     "invoice_number": "INV-202638",
-    "client_id": "cli_007",
-    "client_name": "Zenith Health",
-    "client_email": "ap@zenithhealth.com",
-    "amount": 3500,
+    "client_id": "cli_009",
+    "client_name": "Pulse Logistics",
+    "client_email": "accounts@pulselogistics.com",
+    "amount": 45000,
     "disputed_amount": 0.0,
     "scenario": "overdue_invoice",
     "exception_type": "invoice_overdue",
-    "authority_tier": 1,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": false,
-    "ground_truth": {
-      "expected_tier": 1,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-12 10:00:00",
-        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b93,500.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-12T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657294+00:00"
-  },
-  {
-    "case_id": "RR-1039",
-    "invoice_number": "INV-202639",
-    "client_id": "cli_008",
-    "client_name": "Vortex Media",
-    "client_email": "finance@vortexmedia.in",
-    "amount": 18000,
-    "disputed_amount": 0.0,
-    "scenario": "promise_broken",
-    "exception_type": "promise_broken",
     "authority_tier": 2,
-    "contact_count": 2,
+    "contact_count": 1,
     "retry_count": 0,
     "status": "open",
     "outcome": null,
@@ -1249,8 +1218,39 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-11 10:00:00",
-        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b918,000.00",
+        "timestamp": "2026-08-23 10:00:00",
+        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b945,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-23T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473192+00:00"
+  },
+  {
+    "case_id": "RR-1039",
+    "invoice_number": "INV-202639",
+    "client_id": "cli_002",
+    "client_name": "Nova Labs",
+    "client_email": "accounts@novalabs.io",
+    "amount": 4500,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": false,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-21 10:00:00",
+        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b94,500.00",
         "type": "signal_detected"
       },
       {
@@ -1259,23 +1259,23 @@
         "type": "promise_recorded"
       }
     ],
-    "created_at": "2026-08-11T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657342+00:00",
+    "created_at": "2026-08-21T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473205+00:00",
     "promise_date": "2026-09-02",
     "promise_text": "We will initiate bank transfer by Friday."
   },
   {
     "case_id": "RR-1040",
     "invoice_number": "INV-202640",
-    "client_id": "cli_009",
-    "client_name": "Pulse Logistics",
-    "client_email": "accounts@pulselogistics.com",
-    "amount": 25000,
-    "disputed_amount": 25000,
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 50000,
+    "disputed_amount": 50000,
     "scenario": "dispute",
     "exception_type": "dispute_full",
     "authority_tier": 3,
-    "contact_count": 2,
+    "contact_count": 1,
     "retry_count": 0,
     "status": "open",
     "outcome": null,
@@ -1287,20 +1287,506 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-18 10:00:00",
-        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b925,000.00",
+        "timestamp": "2026-08-20 10:00:00",
+        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b950,000.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-18T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657406+00:00"
+    "created_at": "2026-08-20T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473223+00:00"
   },
   {
     "case_id": "RR-1041",
     "invoice_number": "INV-202641",
+    "client_id": "cli_002",
+    "client_name": "Nova Labs",
+    "client_email": "accounts@novalabs.io",
+    "amount": 2800,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-26 10:00:00",
+        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b92,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-26T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473237+00:00"
+  },
+  {
+    "case_id": "RR-1042",
+    "invoice_number": "INV-202642",
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 2500,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-13 10:00:00",
+        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b92,500.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-13T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473251+00:00"
+  },
+  {
+    "case_id": "RR-1043",
+    "invoice_number": "INV-202643",
     "client_id": "cli_008",
     "client_name": "Vortex Media",
     "client_email": "finance@vortexmedia.in",
+    "amount": 28000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-22 10:00:00",
+        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b928,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-22T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473266+00:00"
+  },
+  {
+    "case_id": "RR-1044",
+    "invoice_number": "INV-202644",
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 32000,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-24 10:00:00",
+        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b932,000.00",
+        "type": "signal_detected"
+      },
+      {
+        "timestamp": "2026-08-30 14:30:00",
+        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
+        "type": "promise_recorded"
+      }
+    ],
+    "created_at": "2026-08-24T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473280+00:00",
+    "promise_date": "2026-09-02",
+    "promise_text": "We will initiate bank transfer by Friday."
+  },
+  {
+    "case_id": "RR-1045",
+    "invoice_number": "INV-202645",
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 85000,
+    "disputed_amount": 25500.0,
+    "scenario": "dispute",
+    "exception_type": "dispute_partial",
+    "authority_tier": 3,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-29 10:00:00",
+        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b985,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-29T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473301+00:00"
+  },
+  {
+    "case_id": "RR-1046",
+    "invoice_number": "INV-202646",
+    "client_id": "cli_005",
+    "client_name": "Apex Dynamics",
+    "client_email": "invoice@apexdynamics.org",
+    "amount": 12000,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 2,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-28 10:00:00",
+        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b912,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-28T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473314+00:00"
+  },
+  {
+    "case_id": "RR-1047",
+    "invoice_number": "INV-202647",
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 3800,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-14 10:00:00",
+        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b93,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-14T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473326+00:00"
+  },
+  {
+    "case_id": "RR-1048",
+    "invoice_number": "INV-202648",
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
+    "amount": 45000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-17 10:00:00",
+        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b945,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-17T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473340+00:00"
+  },
+  {
+    "case_id": "RR-1049",
+    "invoice_number": "INV-202649",
+    "client_id": "cli_004",
+    "client_name": "Nexus Systems",
+    "client_email": "pay@nexussystems.com",
+    "amount": 4500,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-28 10:00:00",
+        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b94,500.00",
+        "type": "signal_detected"
+      },
+      {
+        "timestamp": "2026-08-30 14:30:00",
+        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
+        "type": "promise_recorded"
+      }
+    ],
+    "created_at": "2026-08-28T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473353+00:00",
+    "promise_date": "2026-09-02",
+    "promise_text": "We will initiate bank transfer by Friday."
+  },
+  {
+    "case_id": "RR-1050",
+    "invoice_number": "INV-202650",
+    "client_id": "cli_002",
+    "client_name": "Nova Labs",
+    "client_email": "accounts@novalabs.io",
+    "amount": 12000,
+    "disputed_amount": 12000,
+    "scenario": "dispute",
+    "exception_type": "dispute_full",
+    "authority_tier": 3,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-25 10:00:00",
+        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b912,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-25T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473373+00:00"
+  },
+  {
+    "case_id": "RR-1051",
+    "invoice_number": "INV-202651",
+    "client_id": "cli_010",
+    "client_name": "Hyperion AI",
+    "client_email": "billing@hyperionai.com",
+    "amount": 2800,
+    "disputed_amount": 0.0,
+    "scenario": "payment_failure",
+    "exception_type": "payment_failed",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-29 10:00:00",
+        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b92,800.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-29T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473387+00:00"
+  },
+  {
+    "case_id": "RR-1052",
+    "invoice_number": "INV-202652",
+    "client_id": "cli_008",
+    "client_name": "Vortex Media",
+    "client_email": "finance@vortexmedia.in",
+    "amount": 1200,
+    "disputed_amount": 0.0,
+    "scenario": "checkout_abandonment",
+    "exception_type": "checkout_abandoned",
+    "authority_tier": 1,
+    "contact_count": 0,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 1,
+      "expected_action": "payment_link",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-29 10:00:00",
+        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b91,200.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-29T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473400+00:00"
+  },
+  {
+    "case_id": "RR-1053",
+    "invoice_number": "INV-202653",
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 28000,
+    "disputed_amount": 0.0,
+    "scenario": "overdue_invoice",
+    "exception_type": "invoice_overdue",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-22 10:00:00",
+        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b928,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-22T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473413+00:00"
+  },
+  {
+    "case_id": "RR-1054",
+    "invoice_number": "INV-202654",
+    "client_id": "cli_002",
+    "client_name": "Nova Labs",
+    "client_email": "accounts@novalabs.io",
+    "amount": 8500,
+    "disputed_amount": 0.0,
+    "scenario": "promise_broken",
+    "exception_type": "promise_broken",
+    "authority_tier": 2,
+    "contact_count": 2,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 2,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-12 10:00:00",
+        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b98,500.00",
+        "type": "signal_detected"
+      },
+      {
+        "timestamp": "2026-08-30 14:30:00",
+        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
+        "type": "promise_recorded"
+      }
+    ],
+    "created_at": "2026-08-12T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473426+00:00",
+    "promise_date": "2026-09-02",
+    "promise_text": "We will initiate bank transfer by Friday."
+  },
+  {
+    "case_id": "RR-1055",
+    "invoice_number": "INV-202655",
+    "client_id": "cli_006",
+    "client_name": "Starlight Retail",
+    "client_email": "vendor@starlight.in",
+    "amount": 50000,
+    "disputed_amount": 15000.0,
+    "scenario": "dispute",
+    "exception_type": "dispute_partial",
+    "authority_tier": 3,
+    "contact_count": 1,
+    "retry_count": 0,
+    "status": "open",
+    "outcome": null,
+    "is_held_out_eval": true,
+    "ground_truth": {
+      "expected_tier": 3,
+      "expected_action": "followup",
+      "recoverable": true
+    },
+    "history": [
+      {
+        "timestamp": "2026-08-27 10:00:00",
+        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b950,000.00",
+        "type": "signal_detected"
+      }
+    ],
+    "created_at": "2026-08-27T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473445+00:00"
+  },
+  {
+    "case_id": "RR-1056",
+    "invoice_number": "INV-202656",
+    "client_id": "cli_002",
+    "client_name": "Nova Labs",
+    "client_email": "accounts@novalabs.io",
     "amount": 4200,
     "disputed_amount": 0.0,
     "scenario": "payment_failure",
@@ -1318,182 +1804,20 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-13 10:00:00",
+        "timestamp": "2026-08-15 10:00:00",
         "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b94,200.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-13T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657466+00:00"
+    "created_at": "2026-08-15T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473458+00:00"
   },
   {
-    "case_id": "RR-1042",
-    "invoice_number": "INV-202642",
-    "client_id": "cli_001",
-    "client_name": "Acme Corp",
-    "client_email": "finance@acme.com",
-    "amount": 3800,
-    "disputed_amount": 0.0,
-    "scenario": "checkout_abandonment",
-    "exception_type": "checkout_abandoned",
-    "authority_tier": 1,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 1,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-18 10:00:00",
-        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b93,800.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-18T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657503+00:00"
-  },
-  {
-    "case_id": "RR-1043",
-    "invoice_number": "INV-202643",
-    "client_id": "cli_005",
-    "client_name": "Apex Dynamics",
-    "client_email": "invoice@apexdynamics.org",
-    "amount": 28000,
-    "disputed_amount": 0.0,
-    "scenario": "overdue_invoice",
-    "exception_type": "invoice_overdue",
-    "authority_tier": 2,
-    "contact_count": 1,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-24 10:00:00",
-        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b928,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-24T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657545+00:00"
-  },
-  {
-    "case_id": "RR-1044",
-    "invoice_number": "INV-202644",
+    "case_id": "RR-1057",
+    "invoice_number": "INV-202657",
     "client_id": "cli_006",
     "client_name": "Starlight Retail",
     "client_email": "vendor@starlight.in",
-    "amount": 32000,
-    "disputed_amount": 0.0,
-    "scenario": "promise_broken",
-    "exception_type": "promise_broken",
-    "authority_tier": 2,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-22 10:00:00",
-        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b932,000.00",
-        "type": "signal_detected"
-      },
-      {
-        "timestamp": "2026-08-30 14:30:00",
-        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
-        "type": "promise_recorded"
-      }
-    ],
-    "created_at": "2026-08-22T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657590+00:00",
-    "promise_date": "2026-09-02",
-    "promise_text": "We will initiate bank transfer by Friday."
-  },
-  {
-    "case_id": "RR-1045",
-    "invoice_number": "INV-202645",
-    "client_id": "cli_005",
-    "client_name": "Apex Dynamics",
-    "client_email": "invoice@apexdynamics.org",
-    "amount": 25000,
-    "disputed_amount": 7500.0,
-    "scenario": "dispute",
-    "exception_type": "dispute_partial",
-    "authority_tier": 2,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-15 10:00:00",
-        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b925,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-15T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657673+00:00"
-  },
-  {
-    "case_id": "RR-1046",
-    "invoice_number": "INV-202646",
-    "client_id": "cli_004",
-    "client_name": "Nexus Systems",
-    "client_email": "pay@nexussystems.com",
-    "amount": 12000,
-    "disputed_amount": 0.0,
-    "scenario": "payment_failure",
-    "exception_type": "payment_failed",
-    "authority_tier": 2,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-24 10:00:00",
-        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b912,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-24T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657725+00:00"
-  },
-  {
-    "case_id": "RR-1047",
-    "invoice_number": "INV-202647",
-    "client_id": "cli_009",
-    "client_name": "Pulse Logistics",
-    "client_email": "accounts@pulselogistics.com",
     "amount": 1200,
     "disputed_amount": 0.0,
     "scenario": "checkout_abandonment",
@@ -1511,26 +1835,26 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-25 10:00:00",
+        "timestamp": "2026-08-26 10:00:00",
         "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b91,200.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-25T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657768+00:00"
+    "created_at": "2026-08-26T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473472+00:00"
   },
   {
-    "case_id": "RR-1048",
-    "invoice_number": "INV-202648",
-    "client_id": "cli_006",
-    "client_name": "Starlight Retail",
-    "client_email": "vendor@starlight.in",
+    "case_id": "RR-1058",
+    "invoice_number": "INV-202658",
+    "client_id": "cli_003",
+    "client_name": "Orbit Tech",
+    "client_email": "billing@orbittech.com",
     "amount": 3500,
     "disputed_amount": 0.0,
     "scenario": "overdue_invoice",
     "exception_type": "invoice_overdue",
     "authority_tier": 1,
-    "contact_count": 2,
+    "contact_count": 1,
     "retry_count": 0,
     "status": "open",
     "outcome": null,
@@ -1542,20 +1866,20 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-10 10:00:00",
+        "timestamp": "2026-08-24 10:00:00",
         "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b93,500.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-10T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657819+00:00"
+    "created_at": "2026-08-24T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473488+00:00"
   },
   {
-    "case_id": "RR-1049",
-    "invoice_number": "INV-202649",
-    "client_id": "cli_001",
-    "client_name": "Acme Corp",
-    "client_email": "finance@acme.com",
+    "case_id": "RR-1059",
+    "invoice_number": "INV-202659",
+    "client_id": "cli_009",
+    "client_name": "Pulse Logistics",
+    "client_email": "accounts@pulselogistics.com",
     "amount": 18000,
     "disputed_amount": 0.0,
     "scenario": "promise_broken",
@@ -1573,7 +1897,7 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-13 10:00:00",
+        "timestamp": "2026-08-18 10:00:00",
         "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b918,000.00",
         "type": "signal_detected"
       },
@@ -1583,332 +1907,8 @@
         "type": "promise_recorded"
       }
     ],
-    "created_at": "2026-08-13T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657865+00:00",
-    "promise_date": "2026-09-02",
-    "promise_text": "We will initiate bank transfer by Friday."
-  },
-  {
-    "case_id": "RR-1050",
-    "invoice_number": "INV-202650",
-    "client_id": "cli_007",
-    "client_name": "Zenith Health",
-    "client_email": "ap@zenithhealth.com",
-    "amount": 12000,
-    "disputed_amount": 12000,
-    "scenario": "dispute",
-    "exception_type": "dispute_full",
-    "authority_tier": 3,
-    "contact_count": 1,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 3,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-19 10:00:00",
-        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b912,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-19T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657922+00:00"
-  },
-  {
-    "case_id": "RR-1051",
-    "invoice_number": "INV-202651",
-    "client_id": "cli_010",
-    "client_name": "Hyperion AI",
-    "client_email": "billing@hyperionai.com",
-    "amount": 7500,
-    "disputed_amount": 0.0,
-    "scenario": "payment_failure",
-    "exception_type": "payment_failed",
-    "authority_tier": 2,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-29 10:00:00",
-        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b97,500.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-29T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.657986+00:00"
-  },
-  {
-    "case_id": "RR-1052",
-    "invoice_number": "INV-202652",
-    "client_id": "cli_009",
-    "client_name": "Pulse Logistics",
-    "client_email": "accounts@pulselogistics.com",
-    "amount": 6500,
-    "disputed_amount": 0.0,
-    "scenario": "checkout_abandonment",
-    "exception_type": "checkout_abandoned",
-    "authority_tier": 2,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-15 10:00:00",
-        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b96,500.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-15T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.658026+00:00"
-  },
-  {
-    "case_id": "RR-1053",
-    "invoice_number": "INV-202653",
-    "client_id": "cli_009",
-    "client_name": "Pulse Logistics",
-    "client_email": "accounts@pulselogistics.com",
-    "amount": 28000,
-    "disputed_amount": 0.0,
-    "scenario": "overdue_invoice",
-    "exception_type": "invoice_overdue",
-    "authority_tier": 2,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-11 10:00:00",
-        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b928,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-11T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.658073+00:00"
-  },
-  {
-    "case_id": "RR-1054",
-    "invoice_number": "INV-202654",
-    "client_id": "cli_010",
-    "client_name": "Hyperion AI",
-    "client_email": "billing@hyperionai.com",
-    "amount": 32000,
-    "disputed_amount": 0.0,
-    "scenario": "promise_broken",
-    "exception_type": "promise_broken",
-    "authority_tier": 2,
-    "contact_count": 1,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-19 10:00:00",
-        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b932,000.00",
-        "type": "signal_detected"
-      },
-      {
-        "timestamp": "2026-08-30 14:30:00",
-        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
-        "type": "promise_recorded"
-      }
-    ],
-    "created_at": "2026-08-19T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.658122+00:00",
-    "promise_date": "2026-09-02",
-    "promise_text": "We will initiate bank transfer by Friday."
-  },
-  {
-    "case_id": "RR-1055",
-    "invoice_number": "INV-202655",
-    "client_id": "cli_005",
-    "client_name": "Apex Dynamics",
-    "client_email": "invoice@apexdynamics.org",
-    "amount": 85000,
-    "disputed_amount": 25500.0,
-    "scenario": "dispute",
-    "exception_type": "dispute_partial",
-    "authority_tier": 3,
-    "contact_count": 1,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 3,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-30 10:00:00",
-        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b985,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-30T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.658188+00:00"
-  },
-  {
-    "case_id": "RR-1056",
-    "invoice_number": "INV-202656",
-    "client_id": "cli_007",
-    "client_name": "Zenith Health",
-    "client_email": "ap@zenithhealth.com",
-    "amount": 12000,
-    "disputed_amount": 0.0,
-    "scenario": "payment_failure",
-    "exception_type": "payment_failed",
-    "authority_tier": 2,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-22 10:00:00",
-        "event": "Revenue signal detected (Payment Failure). Amount at risk: \u20b912,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-22T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.658235+00:00"
-  },
-  {
-    "case_id": "RR-1057",
-    "invoice_number": "INV-202657",
-    "client_id": "cli_006",
-    "client_name": "Starlight Retail",
-    "client_email": "vendor@starlight.in",
-    "amount": 3800,
-    "disputed_amount": 0.0,
-    "scenario": "checkout_abandonment",
-    "exception_type": "checkout_abandoned",
-    "authority_tier": 1,
-    "contact_count": 0,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 1,
-      "expected_action": "payment_link",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-27 10:00:00",
-        "event": "Revenue signal detected (Checkout Abandonment). Amount at risk: \u20b93,800.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-27T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.658284+00:00"
-  },
-  {
-    "case_id": "RR-1058",
-    "invoice_number": "INV-202658",
-    "client_id": "cli_008",
-    "client_name": "Vortex Media",
-    "client_email": "finance@vortexmedia.in",
-    "amount": 28000,
-    "disputed_amount": 0.0,
-    "scenario": "overdue_invoice",
-    "exception_type": "invoice_overdue",
-    "authority_tier": 2,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-27 10:00:00",
-        "event": "Revenue signal detected (Overdue Invoice). Amount at risk: \u20b928,000.00",
-        "type": "signal_detected"
-      }
-    ],
-    "created_at": "2026-08-27T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.658338+00:00"
-  },
-  {
-    "case_id": "RR-1059",
-    "invoice_number": "INV-202659",
-    "client_id": "cli_008",
-    "client_name": "Vortex Media",
-    "client_email": "finance@vortexmedia.in",
-    "amount": 32000,
-    "disputed_amount": 0.0,
-    "scenario": "promise_broken",
-    "exception_type": "promise_broken",
-    "authority_tier": 2,
-    "contact_count": 2,
-    "retry_count": 0,
-    "status": "open",
-    "outcome": null,
-    "is_held_out_eval": true,
-    "ground_truth": {
-      "expected_tier": 2,
-      "expected_action": "followup",
-      "recoverable": true
-    },
-    "history": [
-      {
-        "timestamp": "2026-08-29 10:00:00",
-        "event": "Revenue signal detected (Promise Broken). Amount at risk: \u20b932,000.00",
-        "type": "signal_detected"
-      },
-      {
-        "timestamp": "2026-08-30 14:30:00",
-        "event": "Client promised payment by 2026-09-02: 'We will initiate bank transfer by Friday.'",
-        "type": "promise_recorded"
-      }
-    ],
-    "created_at": "2026-08-29T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.658394+00:00",
+    "created_at": "2026-08-18T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473502+00:00",
     "promise_date": "2026-09-02",
     "promise_text": "We will initiate bank transfer by Friday."
   },
@@ -1918,12 +1918,12 @@
     "client_id": "cli_009",
     "client_name": "Pulse Logistics",
     "client_email": "accounts@pulselogistics.com",
-    "amount": 85000,
-    "disputed_amount": 85000,
+    "amount": 25000,
+    "disputed_amount": 25000,
     "scenario": "dispute",
     "exception_type": "dispute_full",
     "authority_tier": 3,
-    "contact_count": 1,
+    "contact_count": 2,
     "retry_count": 0,
     "status": "open",
     "outcome": null,
@@ -1935,12 +1935,12 @@
     },
     "history": [
       {
-        "timestamp": "2026-08-13 10:00:00",
-        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b985,000.00",
+        "timestamp": "2026-08-17 10:00:00",
+        "event": "Revenue signal detected (Dispute). Amount at risk: \u20b925,000.00",
         "type": "signal_detected"
       }
     ],
-    "created_at": "2026-08-13T10:00:00Z",
-    "updated_at": "2026-09-04T16:31:37.658466+00:00"
+    "created_at": "2026-08-17T10:00:00Z",
+    "updated_at": "2026-09-04T16:32:55.473520+00:00"
   }
 ]
