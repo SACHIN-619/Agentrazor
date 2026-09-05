@@ -55,10 +55,10 @@ flowchart TD
  [6. VERIFY]     Payment Outcome Verifier
       │          Polles payment evidence before closing case (Action ≠ Recovered)
       ▼
- [7. MEASURE]    Recovery Ledger (ledger.json) & Metrics Engine (metrics.py)
+ [7. MEASURE]    Recovery Ledger (SQLite 'ledger' table) & Metrics Engine (metrics.py)
       │          Records recovered funds tied to run_id. Computes Recovery Rate & Held-Out Accuracy
       ▼
- [8. AUDIT]      Immutable Audit Logs (runs.json) & Live Activity Timeline (/activity)
+ [8. AUDIT]      Immutable Audit Logs (SQLite 'runs' table) & Live Activity Timeline (/activity)
 ```
 
 ---
@@ -107,6 +107,21 @@ The **Auditor** ensures strict adherence to governance, deterministic policy bou
 2. **Verify Deterministic Policy Compliance**: Inspect cases to confirm that Tier 3 high-risk actions (disputed amounts ≥ ₹10,000 or contested charges) strictly blocked autonomous execution and escalated safely.
 3. **Validate Held-Out Benchmark Accuracy**: Navigate to **`/analytics`** to review held-out evaluation decision accuracy %, false-positive cost analysis, and idempotency lock logs.
 4. **Audit Idempotency & Safe Stopping Bounds**: Confirm that retry limits (`MAX_RETRY_COUNT = 3`) and pre-execution idempotency locks prevented duplicate payment charges.
+
+---
+
+## Data & Persistence Architecture
+
+RazorRecover uses **SQLite** (`backend/data/razorrecover.db`) as its transactional relational datastore for hackathon execution and demo reliability:
+
+- **Relational Tables**:
+  - `cases` — Revenue-at-risk cases, states, customer relationships, and timestamps.
+  - `clients` — Client history profiles, average days to pay, promise reliability ratios.
+  - `ledger` — Verified recovery receipts with financial amounts linked to unique `run_id`.
+  - `runs` — Immutable chronological audit logs of AI diagnoses, policy gates, and actions.
+  - `idempotency_locks` — Persistent ACID locks with TTLs preventing duplicate action charges across restarts.
+- **Transactional Safety**: All state transitions use SQLite transactions (`_db_session()`) with rollback on exception.
+- **Modular Abstraction**: The persistence layer is cleanly abstracted in `backend/store.py`, allowing drop-in connection to Supabase / PostgreSQL in cloud production without altering the core agent or policy rules.
 
 ---
 
