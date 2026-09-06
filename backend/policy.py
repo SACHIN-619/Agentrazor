@@ -155,3 +155,19 @@ def explain_tier(case: dict) -> str:
         if retry_count >= MAX_RETRY_COUNT:
             return f"Max retry count ({retry_count}) reached — stopping autonomous retry and queuing for human review."
     return "Within safe autonomous bounds — agent acts automatically."
+
+
+def evaluate_policy(case: dict, root_cause: str = "") -> dict:
+    """
+    Evaluates policy gate for a case and returns tier and explanation.
+    Used by background autonomous worker and API routers.
+    """
+    tier = required_tier(case)
+    reason = explain_tier(case)
+    return {
+        "tier": tier,
+        "reason": reason,
+        "tier_name": TIER_NAMES.get(tier, "autonomous"),
+        "allowed_autonomous": tier == 1
+    }
+

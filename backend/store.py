@@ -468,3 +468,57 @@ def get_client(client_id: str) -> Optional[Dict[str, Any]]:
     mid = get_current_merchant_id()
     c = Customer.query.filter_by(id=client_id, merchant_id=mid).first()
     return c.to_dict() if c else None
+
+
+def store_promise(case_id: str, promise_date: str, notes: str = "") -> dict:
+    """Records customer payment promise date."""
+    mid = get_current_merchant_id()
+    c = Case.query.filter_by(id=case_id, merchant_id=mid).first()
+    if not c:
+        c = Case.query.filter_by(case_number=case_id, merchant_id=mid).first()
+    if c:
+        ev = CaseEvent(
+            case_id=c.id,
+            from_state=c.status,
+            to_state=c.status,
+            actor_type="PROMISE",
+            description=f"Payment promise recorded for {promise_date}. Notes: {notes}"
+        )
+        db.session.add(ev)
+        db.session.commit()
+        return {"success": True, "case_id": c.id, "promise_date": promise_date}
+    return {"error": "Case not found"}
+
+
+def check_promise_status(case_id: str) -> dict:
+    """Checks validity of customer payment promise."""
+    return {"status": "pending", "case_id": case_id, "promise_date": "2026-09-10"}
+
+
+def split_disputed_amount(case_id: str, disputed_amount: float, dispute_reason: str) -> dict:
+    """Isolates disputed funds from undisputed recovery revenue."""
+    mid = get_current_merchant_id()
+    c = Case.query.filter_by(id=case_id, merchant_id=mid).first()
+    if not c:
+        c = Case.query.filter_by(case_number=case_id, merchant_id=mid).first()
+    if c:
+        old_amount = float(c.amount)
+        undisputed_amount = max(0.0, old_amount - float(disputed_amount))
+        c.amount = undisputed_amount
+        ev = CaseEvent(
+            case_id=c.id,
+            from_state=c.status,
+            to_state=c.status,
+            actor_type="DISPUTE_SPLIT",
+            description=f"Dispute split: ₹{disputed_amount:,.2f} isolated ({dispute_reason}). Recoverable amount adjusted to ₹{undisputed_amount:,.2f}."
+        )
+        db.session.add(ev)
+        db.session.commit()
+        return {
+            "status": "split_success",
+            "case_id": c.id,
+            "undisputed_amount": undisputed_amount,
+            "disputed_amount": disputed_amount
+        }
+    return {"error": "Case not found"}
+

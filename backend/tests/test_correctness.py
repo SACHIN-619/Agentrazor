@@ -8,6 +8,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from app import app
 from policy import required_tier, explain_tier, check_idempotency
 from seed_data import seed_database
 from store import list_cases, get_case, store_promise, check_promise_status, split_disputed_amount, verify_and_close, list_pending_approvals, approve_and_send_draft
@@ -17,10 +18,19 @@ from metrics import get_batch_metrics
 
 class TestRazorRecoverBackend(unittest.TestCase):
 
-    def setUp(self):
-        # Reset and seed database before tests
-        from seed_data import seed_database
+    @classmethod
+    def setUpClass(cls):
+        cls.ctx = app.app_context()
+        cls.ctx.push()
         seed_database(60)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.ctx.pop()
+
+    def setUp(self):
+        pass
+
 
     def test_policy_tiers(self):
         # Tier 1 case
