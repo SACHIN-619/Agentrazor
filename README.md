@@ -195,15 +195,24 @@ RazorRecover provides strict architectural separation between live merchant/test
 
 ---
 
-## 4-Minute Hackathon Demo Script Guide
+## 🎬 Product Walkthrough & Evaluation Guide
 
-1. **0:00–0:25 — Problem Statement**: Show slipping revenue across payment failures and broken promises (*"Merchants don't lose revenue because they can't see failed payments; they lose it because nobody closes the loop."*).
-2. **0:25–1:35 — Hero Workflow (Live Test Mode)**: Show ₹4,800 payment failure → AI diagnosis (bank timeout) → Tier 1 policy approval → Razorpay Test Mode execution → payment evidence verification → ₹4,800 recovered.
-3. **1:35–2:15 — Governance & Safety**:
-   - Show ₹18,000 broken promise → Tier 2 Policy Gate → Approval Queue → One-tap approval.
-   - Show ₹42,000 full dispute → Tier 3 Policy Gate → Autonomous action strictly blocked → Escalated to owner.
-4. **2:15–3:05 — Batch Evaluation Mode**: Click **`Batch Evaluation Mode`** → **`RUN BATCH EVALUATION`** → Display 60 processed cases, ₹8.42L at risk, ₹3.16L recovered (37.5% rate), and 100% held-out decision accuracy.
-5. **3:05–4:00 — Auditability & Closing**: Show case history timeline with `run_id` audit logs (*"Detect revenue risk. Diagnose the cause. Recover what can be recovered. Stop safely when it can't."*).
+Judges and evaluators can follow this end-to-end evaluation flow to test the closed-loop recovery agent:
+
+1. **Problem Context & Revenue Leakage**: Navigate to `/dashboard` to review active revenue signals across payment failures, broken promises, and overdue invoices.
+2. **Autonomous Tier 1 Recovery Flow**:
+   - Inspect a low-value failure (< ₹5,000) on `/cases/[id]`.
+   - Observe **Gemini 2.5** root cause diagnosis (e.g. *Bank Timeout* with 94% confidence).
+   - Verify that the **Deterministic Python Policy Gate** approves Tier 1 autonomous link generation via Razorpay Test APIs.
+   - Click **`Quick Pay`** on the interactive checkout simulator to complete payment and watch the **Verified Recovery Ledger** settle the funds.
+3. **Governance, Safety & Approval Gates**:
+   - Inspect high-value cases (≥ ₹5,000) or broken commitments routed to **`/approvals`** for human authorization.
+   - Test one-tap authorization to execute recovery actions, or inspect high-risk dispute cases (≥ ₹10,000) safely stopped and escalated.
+4. **Batch Evaluation Benchmark & Ground-Truth Verification**:
+   - Switch to **Batch Evaluation Mode** on the Control Room.
+   - Click **`RUN BATCH EVALUATION`** to process a 60-case dataset (40 dev / 20 held-out test split) with ground-truth expected decisions to compute decision accuracy %.
+5. **Independent Auditability**:
+   - Open **`/activity`** as an Auditor to inspect immutable `run_id` audit traces detailing each diagnosis, policy gate check, action attempt, and verification receipt.
 
 ---
 
