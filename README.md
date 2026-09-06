@@ -82,9 +82,9 @@ flowchart TD
 
 ---
 
-## Role-Based Access Control (RBAC) & User Workflows
+## 👥 Role-Based Access Control (RBAC) & Interactive Testing Playbook
 
-RazorRecover features **3 distinct operational roles**, switchable directly in the global header navbar:
+RazorRecover features **3 distinct operational roles** plus an **Isolated Judge Demo Sandbox**, allowing evaluators and merchants to experience the autonomous agent from every perspective:
 
 ```text
                                 RAZORRECOVER OPERATIONAL ROLES
@@ -94,40 +94,80 @@ RazorRecover features **3 distinct operational roles**, switchable directly in t
 👑 MERCHANT ADMIN                    💼 FINANCE OPERATOR                  🔍 AUDITOR
 (Full Execution & Configuration)     (Approvals & Recovery Ops)           (Read-Only & Compliance)
 • Run Autonomous Agent Cycles        • Review & Approve Tier 2 Queues     • Inspect Immutable Audit Logs
-• Override Policy Gates              • Execute Dispute Amount Splits      • Verify Ground-Truth Accuracy %
-• Configure Razorpay API & Webhooks   • Inspect Payment Links & Customer   • Review Cost Metrics & Safety
-• Run Batch Evaluation Benchmarks      Gateway Portal                      Stopping Rules
+• Ingest Revenue Signals (CSV)       • Execute Dispute Amount Splits      • Verify Ground-Truth Accuracy %
+• Configure Razorpay API & Webhooks   • Simulate Customer Checkout Links   • Review Cost Metrics & Safety
+• Run Batch Evaluation Benchmarks      (/pay/[id])                         Stopping Rules
 ```
 
-### 1. 👑 Merchant Admin Workflow
-The **Merchant Admin** has complete operational & administrative control over the AI recovery agent and gateway integrations:
+---
 
-1. **Configure Gateway Connections**: Click **`Razorpay Gateway`** in the top header to inspect Razorpay API credentials (`rzp_test_...`), test gateway latency via **PING**, or sync active merchant receivables via **SYNC INVOICES**.
-2. **Trigger Autonomous Agent Cycles**: In the **Revenue Control Room (`/dashboard`)**, click **`RUN RECOVERY CYCLE`**. The agent executes the closed loop across all active cases, auto-recovering Tier 1 signals (< ₹5,000) via Razorpay Test APIs.
-3. **Evaluate Model Accuracy**: Switch to **`Batch Evaluation Mode`** on the Control Room and click **`RUN BATCH EVALUATION`** to test agent decisions on a 60-case dataset (40 dev / 20 held-out test split) with ground-truth expected decisions.
-4. **Policy Overrides & Dispute Splitting**: Inspect high-value dispute cases on `/cases/[id]` and trigger `split_disputed_amount()` to isolate uncontested revenue from disputed funds.
+### 🟣 Mode 0: Quick Demo Sandbox (No Login Required)
+> **Direct Link**: [**`https://agentrazor-ochre.vercel.app/demo`**](https://agentrazor-ochre.vercel.app/demo)
+1. Navigate to `/demo` or click **"Explore Interactive Demo"** on the landing page.
+2. **Scenario 1 (₹4,800 · Tier 1 Autonomous Recovery)**:
+   - Click **Step 1: Detect Signal** → Bank timeout failure ingested.
+   - Click **Step 2: AI Root Cause Diagnosis** → Gemini diagnoses the timeout with 94% confidence.
+   - Click **Step 3: Deterministic Policy Gate** → Tier 1 auto-approval (< ₹5,000).
+   - Click **Step 4: Execute Recovery Action** → Razorpay Test Mode recovery payment link generated.
+   - Click **Step 5: Verify Payment & Settle** → Click **"Simulate Customer Payment"** → Watch ₹4,800 added to the **Verified Recovery Ledger** in real time!
+3. **Scenario 2 (₹28,000 · Tier 2 Broken Promise)**:
+   - Follow the steps to see the deterministic policy **hold the action in the Approval Queue** for human authorization.
 
 ---
 
-### 2. 💼 Finance Operator Workflow
-The **Finance Operator** manages day-to-day approval queues, payment link verification, and customer recovery channels:
+### 👑 Role 1: 👑 Merchant Admin Testing Guide
+> **Login**: `admin@razorrecover.io` / `password123` (or click **👑 Merchant Admin** on `/login`)  
+> **Key Pages**: `/dashboard`, `/revenue-sources`, `/agent`
+1. **Log in as Merchant Admin**: Notice the blue **Merchant Admin Control Room** header and live APScheduler daemon status.
+2. **Batch CSV Ingestion**:
+   - Click **`Import CSV`** in the top-right header of `/dashboard`.
+   - Click **`Download Sample CSV`** to get a formatted test file (`razorrecover_failed_payments_sample.csv`).
+   - Upload it and click **`Import & Analyze Batch`** → Notice 4 new cases populated in the table!
+3. **Trigger Autonomous Cycle**:
+   - Click **`Process Batch Now`** → The agent calls Gemini, diagnoses failures, assigns policy tiers, and creates Razorpay recovery links.
+4. **Gateway Configuration (`/revenue-sources`)**:
+   - Inspect the live **Razorpay Test Mode Webhook Endpoint** and test gateway latency via **PING**.
 
-1. **Review Tier 2 Approval Queue (`/approvals`)**: Open the Approval Queue to view all cases flagged for human consent (broken promises, high-value cases ≥ ₹5,000, or customized payment plans).
-2. **Approve or Reject Interventions**: Inspect the AI root cause diagnosis and strategic recommendation. Click **`[ APPROVE & EXECUTE ]`** to trigger the Razorpay payment link/retry, or **`[ REJECT & ESCALATE ]`** to hold for owner review.
-3. **Test Payment Verification**: Click **`Pay Test`** on any active case to launch the **Interactive Razorpay Checkout Simulator Modal** (UPI, Card, Netbanking) or share the customer payment gateway URL (`/pay/[id]`).
-4. **Monitor Ledger & Financial Metrics (`/analytics`)**: Track verified cash flow receipts in the Verified Recovery Ledger and analyze scenario recovery rates across payment failures, B2B overdue invoices, and checkout abandonments.
+---
+
+### 💼 Role 2: 💼 Finance Operator Testing Guide
+> **Login**: `finance@razorrecover.io` / `password123` (or click **💼 Finance Operator** on `/login`)  
+> **Key Pages**: `/approvals`, `/dashboard`, `/analytics`
+1. **Log in as Finance Operator**: Notice the amber **Finance Operations Control** banner.
+2. **Review Tier 2 Approvals Queue (`/approvals`)**:
+   - View all high-value cases held by the deterministic policy engine.
+   - Inspect Gemini's root cause diagnosis and recommended action for each customer.
+3. **Authorize Recovery Action**:
+   - Click **`[ Authorize & Dispatch Link ]`** on any pending case → Case immediately moves to `RECOVERING`.
+4. **Simulate Customer Payment**:
+   - In the table on `/dashboard`, find any case in `RECOVERING` state and click **`Quick Pay`**.
+   - The interactive **Razorpay Checkout Modal** opens.
+   - Click **`Simulate Successful Payment (Test Mode)`** → Case moves to **`RECOVERED`** and settles into the financial ledger!
 
 ---
 
-### 3. 🔍 Auditor Workflow
-The **Auditor** ensures strict adherence to governance, deterministic policy bounds, compliance standards, and risk caps:
-
-1. **Inspect Agent Audit Logs (`/activity`)**: Review real-time, chronological execution traces tagged with unique `run_id` timestamps detailing every AI diagnosis, policy check, action attempt, and verification outcome.
-2. **Verify Deterministic Policy Compliance**: Inspect cases to confirm that Tier 3 high-risk actions (disputed amounts ≥ ₹10,000 or contested charges) strictly blocked autonomous execution and escalated safely.
-3. **Validate Held-Out Benchmark Accuracy**: Navigate to **`/analytics`** to review held-out evaluation decision accuracy %, false-positive cost analysis, and idempotency lock logs.
-4. **Audit Idempotency & Safe Stopping Bounds**: Confirm that retry limits (`MAX_RETRY_COUNT = 3`) and pre-execution idempotency locks prevented duplicate payment charges.
+### 🔍 Role 3: 🔍 Auditor Testing Guide
+> **Login**: `auditor@razorrecover.io` / `password123` (or click **🔍 Auditor** on `/login`)  
+> **Key Pages**: `/dashboard`, `/activity`, `/analytics`
+1. **Log in as Auditor**: Notice the purple **Compliance & Audit Control** banner and `Read-Only Mode Enforced` lock badge.
+2. **Verify RBAC Security Protection**:
+   - Notice all execution and configuration buttons are hidden or disabled.
+   - Attempting unauthorized administrative actions is strictly blocked with HTTP 403.
+3. **Inspect 6-Stage Audit Trail (`/dashboard`)**:
+   - Click any case in the table to load the interactive **6-Stage Audit Trail** (Ingestion → AI Diagnosis → Policy Gating → Authorization Proof → Razorpay Verification → Immutable Ledger).
+4. **Inspect Live Audit Stream (`/activity`)**:
+   - Review chronological execution logs tagged with unique `run_id` timestamps.
 
 ---
+
+### 📊 Testing Matrix by Role
+
+| Role | Quick Login Email | Primary Pages | Main Action to Test |
+| :--- | :--- | :--- | :--- |
+| **👑 Merchant Admin** | `admin@razorrecover.io` | `/dashboard`, `/revenue-sources` | Upload CSV → Click **Process Batch Now** |
+| **💼 Finance Operator** | `finance@razorrecover.io` | `/approvals`, `/dashboard` | Click **Authorize & Dispatch Link** → Click **Quick Pay** |
+| **🔍 Auditor** | `auditor@razorrecover.io` | `/dashboard`, `/activity` | Click any case row → Inspect **6-Stage Audit Trail** |
+| **🟣 Sandbox (All)** | *No login* | `/demo` | Follow **Step 1 → Step 5** interactive recovery |
 
 ## Data & Persistence Architecture
 
